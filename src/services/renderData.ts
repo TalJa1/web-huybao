@@ -1,3 +1,5 @@
+import { Student } from "./typeProps";
+
 export const homeListStudent = [
   {
     name: "Phạm Quang Huy",
@@ -153,15 +155,92 @@ export const OnlineStudent = [
 
 export const mealHomeList = [
   {
-    name: 'Cá hồi phi lê',
-    img: require('../assets/home/meal1.png'),
+    name: "Cá hồi phi lê",
+    img: require("../assets/home/meal1.png"),
   },
   {
-    name: 'Canh bò hầm nấm kim chi',
-    img: require('../assets/home/meal2.png'),
+    name: "Canh bò hầm nấm kim chi",
+    img: require("../assets/home/meal2.png"),
   },
   {
-    name: 'Bò lúc lắc xào ớt chuông',
-    img: require('../assets/home/meal2.png'),
+    name: "Bò lúc lắc xào ớt chuông",
+    img: require("../assets/home/meal2.png"),
+  },
+];
+
+const parentNames = [
+  "Nguyễn Văn A",
+  "Trần Thị B",
+  "Lê Văn C",
+  "Hoàng Thị D",
+  "Phạm Văn E",
+  "Nguyễn Thị F",
+  "Trần Văn G",
+  "Lê Thị H",
+  "Hoàng Văn I",
+  "Phạm Thị J",
+];
+
+const hometowns = [
+  "Hà Nội",
+  "Hồ Chí Minh",
+  "Đà Nẵng",
+  "Hải Phòng",
+  "Cần Thơ",
+  "Nha Trang",
+  "Huế",
+  "Vũng Tàu",
+  "Quảng Ninh",
+  "Bình Dương",
+];
+
+const generateStudents = (
+  numClasses: number,
+  studentsPerClass: number
+): Student[] => {
+  const students: Student[] = [];
+  let nameIndex = 0;
+  let parentIndex = 0;
+  let hometownIndex = 0;
+
+  for (let classIndex = 1; classIndex <= numClasses; classIndex++) {
+    const className = `11a${classIndex}`;
+    for (
+      let studentIndex = 1;
+      studentIndex <= studentsPerClass;
+      studentIndex++
+    ) {
+      if (nameIndex >= additionalNames.length) nameIndex = 0;
+      if (parentIndex >= parentNames.length) parentIndex = 0;
+      if (hometownIndex >= hometowns.length) hometownIndex = 0;
+
+      students.push({
+        name: additionalNames[nameIndex],
+        id: `#${uuidv4().slice(0, 8)}`,
+        dob: `2008-${Math.floor(Math.random() * 12) + 1}-${
+          Math.floor(Math.random() * 28) + 1
+        }`,
+        parentName: parentNames[parentIndex],
+        hometown: hometowns[hometownIndex],
+        class: className,
+      });
+
+      nameIndex++;
+      parentIndex++;
+      hometownIndex++;
+    }
   }
-]
+
+  return students;
+};
+
+// Generate 20 students for each of the 10 classes
+export const StudentList = generateStudents(10, 20);
+
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}

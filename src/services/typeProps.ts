@@ -10,3 +10,12 @@ export interface StudentHomeProps {
   id: string;
   fee: string;
 }
+
+export interface Student {
+  name: string;
+  id: string;
+  dob: string;
+  parentName: string;
+  hometown: string;
+  class: string;
+}

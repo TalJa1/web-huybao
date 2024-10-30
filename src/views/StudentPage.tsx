@@ -11,7 +11,13 @@ const StudentPage = () => {
 };
 
 const Main: React.FC = () => {
-  return <Box sx={{ padding: "20px" }}>sdfsdf</Box>;
+  return (
+    <Box sx={{ padding: "20px" }}>
+      <Box sx={{ color: "#000000", fontSize: "36px", fontWeight: "700" }}>
+        Học sinh
+      </Box>
+    </Box>
+  );
 };
 
 export default StudentPage;
