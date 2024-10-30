@@ -1,14 +1,24 @@
-import { Box } from "@mui/material";
-import React from "react";
+import {
+  Box,
+  Chip,
+  MenuItem,
+  Pagination,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../components/TopLayout";
 import {
   bellIcon,
   chivsthuIcon,
   foodFeeIcon,
+  printIcon,
   settingIcon,
   studentSVG,
   teacherIcon,
+  threeDotsIcon,
 } from "../assets/iconSVG";
 import { Line } from "react-chartjs-2";
 import {
@@ -22,6 +32,8 @@ import {
   Legend,
 } from "chart.js";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { extendedHomeListStudent, StudentAvatar } from "../services/renderData";
+import { StudentHomeProps } from "../services/typeProps";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -93,6 +105,34 @@ const Main: React.FC = () => {
       },
     },
   };
+
+  const [selectedClass, setSelectedClass] = useState<string>("11a1");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const studentsPerPage = 5;
+
+  const handleClassChange = (event: SelectChangeEvent<string>) => {
+    setSelectedClass(event.target.value);
+    setCurrentPage(1); // Reset to first page when class changes
+  };
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
+  const filteredStudents = extendedHomeListStudent.filter(
+    (student) => student.class === selectedClass
+  );
+
+  const indexOfLastStudent = currentPage * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents: StudentHomeProps[] = filteredStudents.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
+  );
+
   return (
     <Box sx={{ padding: "20px" }}>
       <Grid container>
@@ -312,6 +352,99 @@ const Main: React.FC = () => {
           </Grid>
         </Grid>
         <Line data={data} options={options} />
+      </Box>
+      <Box sx={{ marginY: 3 }}>
+        <Grid container>
+          <Grid size={{ md: 7, xs: 12 }}>
+            <Box
+              sx={{
+                backgroundColor: "white",
+                padding: "20px",
+                borderRadius: "20px",
+              }}
+            >
+              <Box sx={{ color: "black", fontSize: "24px", fontWeight: "700" }}>
+                Danh sách học sinh nộp tiền
+              </Box>
+              <Box>
+                <Box
+                  sx={{
+                    backgroundColor: "white",
+                    borderRadius: "20px",
+                    padding: 2,
+                  }}
+                >
+                  <Box sx={{ overflowX: "auto" }}>
+                    <Box sx={{ minWidth: "800px" }}>
+                      {currentStudents.map((student, index) => (
+                        <Grid
+                          container
+                          key={student.id}
+                          sx={{
+                            marginBottom: 1,
+                            padding: 1,
+                            alignItems: "center",
+                          }}
+                        >
+                          <Grid size={1}>
+                            <img
+                              src={StudentAvatar[index % StudentAvatar.length]}
+                              alt={student.name}
+                              style={{
+                                borderRadius: "50%",
+                                width: "50px",
+                                height: "50px",
+                              }}
+                            />
+                          </Grid>
+                          <Grid size={3}>
+                            <Typography>{student.name}</Typography>
+                          </Grid>
+                          <Grid size={2}>
+                            <Typography>ID {student.id}</Typography>
+                          </Grid>
+                          <Grid size={2}>
+                            <Chip
+                              label={student.class}
+                              variant="filled"
+                              color="warning"
+                            />
+                          </Grid>
+                          <Grid size={2}>
+                            <Typography>{student.fee}</Typography>
+                          </Grid>
+                          <Grid container size={2}>
+                            <Grid size={6}>{printIcon({})}</Grid>
+                            <Grid size={6}>{threeDotsIcon({})}</Grid>
+                          </Grid>
+                        </Grid>
+                      ))}
+                    </Box>
+                  </Box>
+                </Box>
+                <Grid
+                  container
+                  size={12}
+                  display={"flex"}
+                  alignItems={"center"}
+                >
+                  <Grid size={12} display={"flex"} justifyContent={"flex-end"}>
+                    <Pagination
+                      count={Math.ceil(
+                        filteredStudents.length / studentsPerPage
+                      )}
+                      page={currentPage}
+                      color="primary"
+                      onChange={handlePageChange}
+                      sx={{ marginTop: 2 }}
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid size={{ md: 5, xs: 12 }}></Grid>
+        </Grid>
       </Box>
     </Box>
   );
