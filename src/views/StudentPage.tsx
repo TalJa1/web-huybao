@@ -159,7 +159,7 @@ const Main: React.FC = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Box sx={{ background: "white", padding: "10px" }}>
+      <Box sx={{ background: "white", padding: "10px", borderRadius: "10px" }}>
         <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
           <Table>
             <TableHead>
