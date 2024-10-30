@@ -33,7 +33,7 @@ const Main: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedClass, setSelectedClass] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const studentsPerPage = 5;
+  const studentsPerPage = 10;
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -158,35 +158,61 @@ const Main: React.FC = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Box
-        sx={{ backgroundColor: "white", padding: "10px", borderRadius: "10px" }}
-      >
-       <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Tên học sinh</TableCell>
-              <TableCell>Mã học sinh</TableCell>
-              <TableCell>DOB</TableCell>
-              <TableCell>Tên bố mẹ</TableCell>
-              <TableCell>Quê quán</TableCell>
-              <TableCell>Lớp</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {currentStudents.map((student) => (
-              <TableRow key={student.id}>
-                <TableCell>{student.name}</TableCell>
-                <TableCell>{student.id}</TableCell>
-                <TableCell>{student.dob}</TableCell>
-                <TableCell>{student.parentName}</TableCell>
-                <TableCell>{student.hometown}</TableCell>
-                <TableCell>{student.class}</TableCell>
+      <Box sx={{ background: "white", padding: "10px" }}>
+        <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                >
+                  Tên học sinh
+                </TableCell>
+                <TableCell
+                  sx={{ color: "#1568B1", fontSize: "18px", fontWeight: "700" }}
+                >
+                  Mã học sinh
+                </TableCell>
+                <TableCell
+                  sx={{ color: "#818181", fontSize: "18px", fontWeight: "700" }}
+                >
+                  DOB
+                </TableCell>
+                <TableCell
+                  sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                >
+                  Tên bố mẹ
+                </TableCell>
+                <TableCell
+                  sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                >
+                  Quê quán
+                </TableCell>
+                <TableCell
+                  sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                >
+                  Lớp
+                </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {currentStudents.map((student) => (
+                <TableRow key={student.id}>
+                  <TableCell
+                    sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                  >
+                    {student.name}
+                  </TableCell>
+                  <TableCell sx={{ color: "#1568B1" }}>{student.id}</TableCell>
+                  <TableCell sx={{ color: "#818181" }}>{student.dob}</TableCell>
+                  <TableCell>{student.parentName}</TableCell>
+                  <TableCell>{student.hometown}</TableCell>
+                  <TableCell>{student.class}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
         <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
           <Pagination
             count={Math.ceil(filteredStudents.length / studentsPerPage)}
