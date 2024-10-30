@@ -15,7 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import TopLayout from "../components/TopLayout";
 import Grid from "@mui/material/Grid2";
 import { TeacherList } from "../services/renderData";
-import { phoneIcon, mailIcon } from "../assets/iconSVG";
+import { phoneIcon, mailIcon, threeDotsIcon } from "../assets/iconSVG";
 
 const TeacherPage = () => {
   return (
@@ -167,9 +167,19 @@ const Main: React.FC = () => {
               backgroundColor: "white",
               borderRadius: "20px",
               paddingY: 2,
+              position: "relative",
             }}
             key={teacher.name}
           >
+            <Box
+              sx={{
+                position: "absolute",
+                top: 8,
+                right: 10,
+              }}
+            >
+              {threeDotsIcon({})}
+            </Box>
             <Avatar
               src={teacher.img}
               alt={teacher.name}
@@ -188,7 +198,12 @@ const Main: React.FC = () => {
               {teacher.subject}
             </Typography>
             <Box
-              sx={{ display: "flex", justifyContent: "center", columnGap: 2 , marginTop: 3}}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                columnGap: 2,
+                marginTop: 3,
+              }}
             >
               {phoneIcon({})} {mailIcon({})}
             </Box>
@@ -197,6 +212,7 @@ const Main: React.FC = () => {
       </Grid>
       <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
         <Pagination
+          color="primary"
           count={Math.ceil(filteredTeachers.length / teachersPerPage)}
           page={currentPage}
           onChange={handlePageChange}
