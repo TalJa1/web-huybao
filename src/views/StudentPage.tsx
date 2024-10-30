@@ -5,10 +5,16 @@ import {
   Select,
   MenuItem,
   Button,
-  Typography,
   SelectChangeEvent,
   Pagination,
   InputAdornment,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from "@mui/material";
 import TopLayout from "../components/TopLayout";
 import { StudentList } from "../services/renderData";
@@ -155,29 +161,39 @@ const Main: React.FC = () => {
       <Box
         sx={{ backgroundColor: "white", padding: "10px", borderRadius: "10px" }}
       >
-        {currentStudents.map((student) => (
-          <Box
-            key={student.id}
-            sx={{
-              marginBottom: 2,
-              padding: 2,
-            }}
-          >
-            <Typography variant="h6">{student.name}</Typography>
-            <Typography>ID: {student.id}</Typography>
-            <Typography>DOB: {student.dob}</Typography>
-            <Typography>Parent: {student.parentName}</Typography>
-            <Typography>Hometown: {student.hometown}</Typography>
-            <Typography>Class: {student.class}</Typography>
-          </Box>
-        ))}
-      </Box>
-      <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
-        <Pagination
-          count={Math.ceil(filteredStudents.length / studentsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-        />
+       <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Tên học sinh</TableCell>
+              <TableCell>Mã học sinh</TableCell>
+              <TableCell>DOB</TableCell>
+              <TableCell>Tên bố mẹ</TableCell>
+              <TableCell>Quê quán</TableCell>
+              <TableCell>Lớp</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {currentStudents.map((student) => (
+              <TableRow key={student.id}>
+                <TableCell>{student.name}</TableCell>
+                <TableCell>{student.id}</TableCell>
+                <TableCell>{student.dob}</TableCell>
+                <TableCell>{student.parentName}</TableCell>
+                <TableCell>{student.hometown}</TableCell>
+                <TableCell>{student.class}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+        <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
+          <Pagination
+            count={Math.ceil(filteredStudents.length / studentsPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+          />
+        </Box>
       </Box>
     </Box>
   );
