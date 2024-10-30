@@ -33,6 +33,21 @@ const Main: React.FC = () => {
               <TextField
                 variant="outlined"
                 placeholder="Tìm kiếm"
+                sx={{
+                  backgroundColor: "white",
+                  borderRadius: "30px",
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&:hover fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused fieldset": {
+                      border: "none",
+                    },
+                  },
+                }}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">

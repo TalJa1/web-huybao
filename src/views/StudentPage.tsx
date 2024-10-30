@@ -8,10 +8,12 @@ import {
   Typography,
   SelectChangeEvent,
   Pagination,
+  InputAdornment,
 } from "@mui/material";
 import TopLayout from "../components/TopLayout";
 import { StudentList } from "../services/renderData";
 import Grid from "@mui/material/Grid2";
+import SearchIcon from "@mui/icons-material/Search";
 
 const StudentPage = () => {
   return (
@@ -78,39 +80,69 @@ const Main: React.FC = () => {
         alignItems="center"
         sx={{ marginBottom: "20px" }}
       >
-        <Grid size={12}>
+        <Grid size={6}>
           <TextField
-            fullWidth
             variant="outlined"
-            placeholder="Search by name or ID"
+            placeholder="Tìm kiếm"
             value={searchQuery}
             onChange={handleSearchChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              sx: {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+              },
+            }}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "30px",
+              "& .MuiOutlinedInput-root": {
+                "& fieldset": {
+                  border: "none",
+                },
+                "&:hover fieldset": {
+                  border: "none",
+                },
+                "&.Mui-focused fieldset": {
+                  border: "none",
+                },
+              },
+            }}
           />
         </Grid>
-        <Grid size={12}>
-          <Select
-            fullWidth
-            value={selectedClass}
-            onChange={handleClassChange}
-            displayEmpty
-          >
-            <MenuItem value="All">All Classes</MenuItem>
-            {Array.from(
-              new Set(StudentList.map((student) => student.class))
-            ).map((className) => (
-              <MenuItem key={className} value={className}>
-                {className}
-              </MenuItem>
-            ))}
-          </Select>
-        </Grid>
-        <Grid size={12} display="flex" justifyContent="flex-end">
-          <Button variant="contained" color="primary">
-            + New Student
-          </Button>
+        <Grid size={6}>
+          <Grid size={6}>
+            <Select
+              fullWidth
+              value={selectedClass}
+              onChange={handleClassChange}
+              displayEmpty
+            >
+              <MenuItem value="All">All Classes</MenuItem>
+              {Array.from(
+                new Set(StudentList.map((student) => student.class))
+              ).map((className) => (
+                <MenuItem key={className} value={className}>
+                  {className}
+                </MenuItem>
+              ))}
+            </Select>
+          </Grid>
+          <Grid size={6} display="flex" justifyContent="flex-end">
+            <Button variant="contained" color="primary">
+              + New Student
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
-      <Box sx={{ backgroundColor: "white", padding: "10px", borderRadius: '10px' }}>
+      <Box
+        sx={{ backgroundColor: "white", padding: "10px", borderRadius: "10px" }}
+      >
         {currentStudents.map((student) => (
           <Box
             key={student.id}
