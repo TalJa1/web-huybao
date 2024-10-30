@@ -115,7 +115,9 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </MenuItem>
         </Menu>
       </Sidebar>
-      <div style={{ flex: 1, padding: "20px" }}>{children}</div>
+      <div style={{ flex: 1, padding: "20px", backgroundColor: "#E7F5FF" }}>
+        {children}
+      </div>
     </div>
   );
 };
