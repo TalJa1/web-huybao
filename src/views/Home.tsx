@@ -20,7 +20,7 @@ const Main: React.FC = () => {
   return (
     <Box>
       <Grid container spacing={2}>
-        <Grid size={{ md: 9, xs: 12 }} container>
+        <Grid size={{ md: 9, xs: 12 }} container sx={{ padding: "20px" }}>
           <Grid size={12} container sx={{ alignItems: "center" }}>
             <Grid
               size={8}
@@ -197,7 +197,7 @@ const Main: React.FC = () => {
             <ListStudentHomeComponent />
           </Box>
         </Grid>
-        <Grid size={{ md: 3, xs: 12 }}></Grid>
+        <Grid size={{ md: 3, xs: 12 }} sx={{ backgroundColor: "white" }}></Grid>
       </Grid>
     </Box>
   );

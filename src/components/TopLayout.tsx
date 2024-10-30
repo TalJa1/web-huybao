@@ -143,7 +143,6 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <div
         style={{
           flex: 1,
-          padding: "20px",
           overflow: "auto",
           backgroundColor: "#E7F5FF",
         }}
