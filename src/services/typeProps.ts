@@ -1,5 +1,5 @@
 export interface IconSVGProps {
-  width: number;
-  height: number;
+  width: any;
+  height: any;
   color?: string;
 }
