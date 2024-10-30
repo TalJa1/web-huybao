@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid2";
 import TopLayout from "../components/TopLayout";
 import {
   bellIcon,
+  chivsthuIcon,
   foodFeeIcon,
   settingIcon,
   studentSVG,
@@ -20,7 +21,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -250,6 +251,66 @@ const Main: React.FC = () => {
           padding: "20px",
         }}
       >
+        <Grid container sx={{ marginY: 2 }}>
+          <Grid size={6}>
+            <Box sx={{ color: "#000000", fontSize: "24px", fontWeight: "700" }}>
+              Phân tích tài chính
+            </Box>
+          </Grid>
+          <Grid
+            size={6}
+            display="flex"
+            justifyContent="flex-end"
+            sx={{ columnGap: "10px" }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                columnGap: "10px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  columnGap: "5px",
+                }}
+              >
+                {chivsthuIcon({ color: "#FCC43E" })}
+                <Box sx={{ color: "#818181" }}>Chi</Box>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  columnGap: "5px",
+                }}
+              >
+                {chivsthuIcon({ color: "#EE7223" })}{" "}
+                <Box sx={{ color: "#818181" }}>Thu</Box>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                border: "2px solid #1568B1",
+                borderRadius: "30px",
+                padding: "5px 10px",
+              }}
+            >
+              <Box sx={{ color: "#1568B1", marginRight: "10px" }}>
+                Theo tháng
+              </Box>
+              <ArrowDropDownIcon sx={{ color: "#1568B1" }} />
+            </Box>
+          </Grid>
+        </Grid>
         <Line data={data} options={options} />
       </Box>
     </Box>

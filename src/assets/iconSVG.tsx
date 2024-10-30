@@ -9,6 +9,30 @@ export const example: React.FC<IconSVGProps> = ({ width, height, color }) => {
   return <></>;
 };
 
+export const chivsthuIcon: React.FC<IconSVGProps> = ({ width, height, color }) => {
+  width = width ?? 12;
+  height = height ?? 12;
+  color = color ?? "#FCC43E";
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 12 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        r="4.5"
+        fill="white"
+        stroke={color}
+        stroke-width="3"
+      />
+    </svg>
+  );
+};
+
 export const moneyIcon: React.FC<IconSVGProps> = ({ width, height, color }) => {
   width = width ?? 41;
   height = height ?? 40;
