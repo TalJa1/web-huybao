@@ -9,6 +9,33 @@ export const example: React.FC<IconSVGProps> = ({ width, height, color }) => {
   return <></>;
 };
 
+export const moveToChatIcon: React.FC<IconSVGProps> = ({
+  width,
+  height,
+  color,
+}) => {
+  width = width ?? 34;
+  height = height ?? 34;
+  color = color ?? "#1568B1";
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 34 34"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.1666 19.8335L17.3864 27.3463C17.8296 28.3804 19.208 28.4896 19.7605 27.5097C20.8508 25.576 22.4671 22.4574 24.0833 18.4168C26.9166 11.3335 28.3333 5.66679 28.3333 5.66679C28.3333 5.66679 22.6666 7.08346 15.5833 9.91679C11.5427 11.533 8.42411 13.1492 6.4904 14.2396C5.51043 14.7921 5.61968 16.1705 6.65373 16.6136L14.1666 19.8335Z"
+        stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
 export const bellIcon: React.FC<IconSVGProps> = ({ width, height, color }) => {
   width = width ?? 36;
   height = height ?? 36;

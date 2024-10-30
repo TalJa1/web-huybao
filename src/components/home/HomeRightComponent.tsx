@@ -1,7 +1,8 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React from "react";
-import { bellIcon, settingIcon } from "../../assets/iconSVG";
+import { bellIcon, moveToChatIcon, settingIcon } from "../../assets/iconSVG";
+import { OnlineStudent, StudentAvatar } from "../../services/renderData";
 
 const HomeRightComponent = () => {
   return (
@@ -53,6 +54,41 @@ const Main: React.FC = () => {
           </Button>
         </Grid>
       </Grid>
+      <Box>
+        {OnlineStudent.map((student, index) => (
+          <Grid
+            container
+            key={index}
+            display={"flex"}
+            alignItems={"center"}
+            sx={{
+              padding: 1,
+            }}
+          >
+            <Grid
+              size={2}
+              sx={{ overflow: "hidden" }}
+              display={"flex"}
+              alignItems={"center"}
+            >
+              <img
+                src={StudentAvatar[index % StudentAvatar.length]}
+                alt={student.name}
+                style={{ borderRadius: "30%", width: "30px", height: "30px" }}
+              />
+            </Grid>
+            <Grid size={8}>
+              <Box sx={{ fontWeight: "700", color: "black" }}>
+                {student.name}
+              </Box>
+              <Box sx={{ color: "#818181" }}>{student.class}</Box>
+            </Grid>
+            <Grid size={2} display="flex" justifyContent="center">
+              {moveToChatIcon({ width: 24, height: 24 })}
+            </Grid>
+          </Grid>
+        ))}
+      </Box>
     </Box>
   );
 };
