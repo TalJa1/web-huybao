@@ -79,6 +79,7 @@ const Main: React.FC = () => {
     responsive: true,
     plugins: {
       legend: {
+        display: false,
         position: "top" as const,
         labels: {
           usePointStyle: true,
@@ -86,7 +87,7 @@ const Main: React.FC = () => {
         },
       },
       title: {
-        display: true,
+        display: false,
         text: "Phân tích tài chính",
       },
     },
