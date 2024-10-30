@@ -210,7 +210,7 @@ const Main: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-      <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
+      <Box display="flex" justifyContent="right" sx={{ marginTop: 2 }}>
         <Pagination
           color="primary"
           count={Math.ceil(filteredTeachers.length / teachersPerPage)}
