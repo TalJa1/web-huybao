@@ -2,7 +2,11 @@ import { Box, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React from "react";
 import { bellIcon, moveToChatIcon, settingIcon } from "../../assets/iconSVG";
-import { OnlineStudent, StudentAvatar } from "../../services/renderData";
+import {
+  mealHomeList,
+  OnlineStudent,
+  StudentAvatar,
+} from "../../services/renderData";
 
 const HomeRightComponent = () => {
   return (
@@ -88,6 +92,41 @@ const Main: React.FC = () => {
             </Grid>
           </Grid>
         ))}
+        <Button
+          sx={{
+            marginY: 2,
+            backgroundColor: "black",
+            color: "white",
+            borderRadius: 10,
+            paddingY: 1.5,
+            width: "100%",
+          }}
+        >
+          Xem thêm
+        </Button>
+      </Box>
+      <Box>
+        <Box sx={{ color: "#363B64", fontSize: "24px", fontWeight: "700" }}>
+          Thực đơn gần đây
+        </Box>
+        <Box>
+          {mealHomeList.map((meal, index) => {
+            return (
+              <Grid container key={index} sx={{ rowGap: 2, marginY: 2 }}>
+                <img alt="" src={meal.img} style={{ width: "100%" }} />
+                <Box
+                  sx={{
+                    color: "#363B64",
+                    fontSize: "18px",
+                    fontWeight: "700",
+                  }}
+                >
+                  {meal.name}
+                </Box>
+              </Grid>
+            );
+          })}
+        </Box>
         <Button
           sx={{
             marginY: 2,

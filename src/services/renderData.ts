@@ -150,3 +150,18 @@ export const OnlineStudent = [
     class: "11a6",
   },
 ];
+
+export const mealHomeList = [
+  {
+    name: 'Cá hồi phi lê',
+    img: require('../assets/home/meal1.png'),
+  },
+  {
+    name: 'Canh bò hầm nấm kim chi',
+    img: require('../assets/home/meal2.png'),
+  },
+  {
+    name: 'Bò lúc lắc xào ớt chuông',
+    img: require('../assets/home/meal2.png'),
+  }
+]
