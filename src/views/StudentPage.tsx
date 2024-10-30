@@ -21,6 +21,7 @@ import TopLayout from "../components/TopLayout";
 import { StudentList } from "../services/renderData";
 import Grid from "@mui/material/Grid2";
 import SearchIcon from "@mui/icons-material/Search";
+import { mailIcon, phoneIcon, threeDotsIcon } from "../assets/iconSVG";
 
 const StudentPage = () => {
   return (
@@ -192,7 +193,17 @@ const Main: React.FC = () => {
                 <TableCell
                   sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
                 >
+                  Liên lạc
+                </TableCell>
+                <TableCell
+                  sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                >
                   Lớp
+                </TableCell>
+                <TableCell
+                  sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
+                >
+                  Hành động
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -209,8 +220,12 @@ const Main: React.FC = () => {
                   <TableCell>{student.parentName}</TableCell>
                   <TableCell>{student.hometown}</TableCell>
                   <TableCell>
+                    {phoneIcon({})} {mailIcon({})}
+                  </TableCell>
+                  <TableCell>
                     <Chip label={student.class} color="warning" />
                   </TableCell>
+                  <TableCell align="center">{threeDotsIcon({})}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
