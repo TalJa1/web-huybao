@@ -3,7 +3,9 @@ import TopLayout from "../components/TopLayout";
 import { Box, InputAdornment, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import SearchIcon from "@mui/icons-material/Search";
-import { studentSVG, teacherIcon } from "../assets/iconSVG";
+import { foodFeeIcon, studentSVG, teacherIcon } from "../assets/iconSVG";
+import chart1 from "../assets/home/chart1.png";
+import chart2 from "../assets/home/chart2.png";
 
 const Home = () => {
   return (
@@ -44,7 +46,16 @@ const Main: React.FC = () => {
               />
             </Grid>
           </Grid>
-          <Grid size={12} container>
+          <Grid
+            size={12}
+            container
+            sx={{
+              marginvertical: "10px",
+              backgroundColor: "white",
+              padding: "10px",
+              borderRadius: "20px",
+            }}
+          >
             <Grid size={{ md: 4, xs: 12 }} container alignItems="center">
               <Grid size={3}>
                 <Box
@@ -99,7 +110,7 @@ const Main: React.FC = () => {
               <Grid size={3}>
                 <Box
                   sx={{
-                    backgroundColor: "#1568B1",
+                    backgroundColor: "#FCC43E",
                     borderRadius: "50%",
                     display: "flex",
                     justifyContent: "center",
@@ -108,7 +119,7 @@ const Main: React.FC = () => {
                     height: 50,
                   }}
                 >
-                  {studentSVG({ width: 30, height: 30, color: "white" })}
+                  {foodFeeIcon({ width: 30, height: 30, color: "white" })}
                 </Box>
               </Grid>
               <Grid size={9}>
@@ -121,15 +132,64 @@ const Main: React.FC = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid size={12} container>
-            <Grid
-              size={{ md: 6, xs: 12 }}
-              sx={{ alignItems: "center", justifyContent: "center" }}
-            >
+          <Grid size={12} container spacing={2} justifyContent="center">
+            <Grid size={{ md: 6, xs: 12 }} container justifyContent="center">
               <Box>Tỷ lệ học sinh có tham gia học hôm nay ngày 12/11/2023</Box>
+              <img style={{ blockSize: "15em" }} alt="" src={chart1} />
             </Grid>
-            <Grid size={{ md: 6, xs: 12 }}>
+            <Grid size={{ md: 6, xs: 12 }} container justifyContent="center">
               <Box>Tỷ lệ học sinh chưa đóng phí theo các khối</Box>
+              <img style={{ blockSize: "15em" }} alt="" src={chart2} />
+              <Grid size={12} container justifyContent="center">
+                <Grid
+                  size={4}
+                  container
+                  alignItems="center"
+                  sx={{ display: "flex" }}
+                >
+                  <Box
+                    sx={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius:'4px',
+                      backgroundColor: "#FCC43E",
+                    }}
+                  />
+                  <Box>Khối 10</Box>
+                </Grid>
+                <Grid
+                  size={4}
+                  container
+                  alignItems="center"
+                  sx={{ display: "flex" }}
+                >
+                  <Box
+                    sx={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius:'4px',
+                      backgroundColor: "#EE7223",
+                    }}
+                  />
+                  <Box>Khối 11</Box>
+                </Grid>
+                <Grid
+                  size={4}
+                  container
+                  alignItems="center"
+                  sx={{ display: "flex" }}
+                >
+                  <Box
+                    sx={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius:'4px',
+                      backgroundColor: "#1568B1",
+                    }}
+                  />
+                  <Box>Khối 12</Box>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
