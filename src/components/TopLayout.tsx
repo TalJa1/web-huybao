@@ -53,7 +53,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
-      collapsed={isMinimized}
+        collapsed={isMinimized}
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
             backgroundColor: "#1568B1",
@@ -140,7 +140,14 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </MenuItem>
         </Menu>
       </Sidebar>
-      <div style={{ flex: 1, padding: "20px", overflow: "auto" }}>
+      <div
+        style={{
+          flex: 1,
+          padding: "20px",
+          overflow: "auto",
+          backgroundColor: "#E7F5FF",
+        }}
+      >
         {children}
       </div>
     </div>
