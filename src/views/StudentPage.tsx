@@ -99,6 +99,7 @@ const Main: React.FC = () => {
               },
             }}
             sx={{
+              width: "50%",
               backgroundColor: "white",
               borderRadius: "30px",
               "& .MuiOutlinedInput-root": {
@@ -115,13 +116,19 @@ const Main: React.FC = () => {
             }}
           />
         </Grid>
-        <Grid size={6}>
-          <Grid size={6}>
+        <Grid size={6} container>
+          <Grid size={8} display="flex" justifyContent="flex-end">
             <Select
               fullWidth
               value={selectedClass}
               onChange={handleClassChange}
               displayEmpty
+              sx={{
+                width: "50%",
+                backgroundColor: "white",
+                borderRadius: "30px",
+                borderColor: "#1568B1",
+              }}
             >
               <MenuItem value="All">All Classes</MenuItem>
               {Array.from(
@@ -133,8 +140,13 @@ const Main: React.FC = () => {
               ))}
             </Select>
           </Grid>
-          <Grid size={6} display="flex" justifyContent="flex-end">
-            <Button variant="contained" color="primary">
+          <Grid size={4} display="flex" justifyContent="flex-end">
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              sx={{ borderRadius: "40px" }}
+            >
               + New Student
             </Button>
           </Grid>
