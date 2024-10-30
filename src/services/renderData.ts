@@ -244,3 +244,41 @@ function uuidv4() {
     return v.toString(16);
   });
 }
+
+const subjects = [
+  "Math",
+  "Physics",
+  "Chemistry",
+  "Biology",
+  "History",
+  "Geography",
+  "Literature",
+  "English",
+  "Physical Education",
+  "Music",
+];
+
+const generateTeachers = (numTeachers: number) => {
+  const teachers = [];
+  let nameIndex = 0;
+  let subjectIndex = 0;
+
+  for (let i = 0; i < numTeachers; i++) {
+    if (nameIndex >= additionalNames.length) nameIndex = 0;
+    if (subjectIndex >= subjects.length) subjectIndex = 0;
+
+    teachers.push({
+      name: additionalNames[nameIndex],
+      subject: subjects[subjectIndex],
+      img: StudentAvatar[i % StudentAvatar.length],
+    });
+
+    nameIndex++;
+    subjectIndex++;
+  }
+
+  return teachers;
+};
+
+// Generate 20 teachers
+export const TeacherList = generateTeachers(20);
