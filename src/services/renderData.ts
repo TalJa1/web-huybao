@@ -79,3 +79,13 @@ const generateMoreStudents = (baseList: any[], count: number) => {
 
 // Generate 5 more students for each class
 export const extendedHomeListStudent = generateMoreStudents(homeListStudent, 5);
+
+export const StudentAvatar = [
+  require("../assets/home/1.png"),
+  require("../assets/home/1.png"),
+  require("../assets/home/3.png"),
+  require("../assets/home/4.png"),
+  require("../assets/home/5.png"),
+  require("../assets/home/6.png"),
+  require("../assets/home/7.png"),
+]
