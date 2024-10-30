@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Box } from "@mui/material";
 import {
@@ -14,8 +14,13 @@ import {
 } from "../assets/iconSVG";
 
 const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [activeItem, setActiveItem] = useState<string>("home");
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState<string>(location.pathname);
   const [isMinimized, setIsMinimized] = useState<boolean>(false);
+
+  useEffect(() => {
+    setActiveItem(location.pathname);
+  }, [location]);
 
   const handleMenuItemClick = (item: string) => {
     setActiveItem(item);
@@ -84,57 +89,57 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <Menu>
           <MenuItem
             component={<Link to="/" />}
-            icon={homeSVG({ color: getIconColor("home") })}
-            onClick={() => handleMenuItemClick("home")}
-            style={getMenuItemStyle("home")}
+            icon={homeSVG({ color: getIconColor("/") })}
+            onClick={() => handleMenuItemClick("/")}
+            style={getMenuItemStyle("/")}
           >
             {!isMinimized && "Tổng quan"}
           </MenuItem>
           <MenuItem
             component={<Link to="/students" />}
-            icon={studentSVG({ color: getIconColor("students") })}
-            onClick={() => handleMenuItemClick("students")}
-            style={getMenuItemStyle("students")}
+            icon={studentSVG({ color: getIconColor("/students") })}
+            onClick={() => handleMenuItemClick("/students")}
+            style={getMenuItemStyle("/students")}
           >
             {!isMinimized && "Học sinh"}
           </MenuItem>
           <MenuItem
             component={<Link to="/teachers" />}
-            icon={teacherIcon({ color: getIconColor("teachers") })}
-            onClick={() => handleMenuItemClick("teachers")}
-            style={getMenuItemStyle("teachers")}
+            icon={teacherIcon({ color: getIconColor("/teachers") })}
+            onClick={() => handleMenuItemClick("/teachers")}
+            style={getMenuItemStyle("/teachers")}
           >
             {!isMinimized && "Giáo viên"}
           </MenuItem>
           <MenuItem
             component={<Link to="/finance" />}
-            icon={financeIcon({ color: getIconColor("finance") })}
-            onClick={() => handleMenuItemClick("finance")}
-            style={getMenuItemStyle("finance")}
+            icon={financeIcon({ color: getIconColor("/finance") })}
+            onClick={() => handleMenuItemClick("/finance")}
+            style={getMenuItemStyle("/finance")}
           >
             {!isMinimized && "Tài chính"}
           </MenuItem>
           <MenuItem
             component={<Link to="/meals" />}
-            icon={mealIcon({ color: getIconColor("meals") })}
-            onClick={() => handleMenuItemClick("meals")}
-            style={getMenuItemStyle("meals")}
+            icon={mealIcon({ color: getIconColor("/meals") })}
+            onClick={() => handleMenuItemClick("/meals")}
+            style={getMenuItemStyle("/meals")}
           >
             {!isMinimized && "Bữa ăn"}
           </MenuItem>
           <MenuItem
             component={<Link to="/users" />}
-            icon={userIcon({ color: getIconColor("users") })}
-            onClick={() => handleMenuItemClick("users")}
-            style={getMenuItemStyle("users")}
+            icon={userIcon({ color: getIconColor("/users") })}
+            onClick={() => handleMenuItemClick("/users")}
+            style={getMenuItemStyle("/users")}
           >
             {!isMinimized && "Người dùng"}
           </MenuItem>
           <MenuItem
             component={<Link to="/messages" />}
-            icon={messageIcon({ color: getIconColor("messages") })}
-            onClick={() => handleMenuItemClick("messages")}
-            style={getMenuItemStyle("messages")}
+            icon={messageIcon({ color: getIconColor("/messages") })}
+            onClick={() => handleMenuItemClick("/messages")}
+            style={getMenuItemStyle("/messages")}
           >
             {!isMinimized && "Tin nhắn"}
           </MenuItem>
