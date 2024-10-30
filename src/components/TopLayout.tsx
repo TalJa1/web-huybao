@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Box } from "@mui/material";
@@ -32,11 +32,10 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
-        style={{
-          backgroundColor: "#1568B1",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+        rootStyles={{
+          [`.${sidebarClasses.container}`]: {
+            backgroundColor: "#1568B1",
+          },
         }}
       >
         <Box
