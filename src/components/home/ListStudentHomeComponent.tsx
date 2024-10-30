@@ -129,6 +129,7 @@ const ListStudentHomeComponent = () => {
           <Pagination
             count={Math.ceil(filteredStudents.length / studentsPerPage)}
             page={currentPage}
+            color="primary"
             onChange={handlePageChange}
             sx={{ marginTop: 2 }}
           />

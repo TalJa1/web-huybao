@@ -231,8 +231,9 @@ const Main: React.FC = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
+        <Box display="flex" justifyContent="flex-end" sx={{ marginTop: 2 }}>
           <Pagination
+            color="primary"
             count={Math.ceil(filteredStudents.length / studentsPerPage)}
             page={currentPage}
             onChange={handlePageChange}
