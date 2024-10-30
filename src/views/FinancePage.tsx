@@ -11,7 +11,7 @@ const FinancePage = () => {
 };
 
 const Main: React.FC = () => {
-  return <Box></Box>;
+  return <Box sx={{ padding: "20px" }}></Box>;
 };
 
 export default FinancePage;

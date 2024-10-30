@@ -142,8 +142,17 @@ const Main: React.FC = () => {
               <Grid size={9}>
                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                   <Box sx={{ color: "#818181", fontSize: 18 }}>Phí ăn</Box>
-                  <Box sx={{ fontSize: 36, fontWeight: "700", color: "black" }}>
-                    đ32.000.000
+                  <Box
+                    sx={{
+                      fontSize: 36,
+                      fontWeight: "700",
+                      color: "black",
+                      wordWrap: "break-word",
+                      overflowWrap: "break-word",
+                      width: "100%",
+                    }}
+                  >
+                    32.000.000
                   </Box>
                 </Box>
               </Grid>
