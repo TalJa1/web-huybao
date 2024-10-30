@@ -29,6 +29,13 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     fontWeight: activeItem === item ? 700 : 400,
   });
 
+  const getMenuItemStyle = (item: string) => ({
+    ...getTextStyle(item),
+    backgroundColor: activeItem === item ? "#E7F5FF" : "transparent",
+    borderTopLeftRadius: activeItem === item ? "40px" : "0",
+    borderBottomLeftRadius: activeItem === item ? "40px" : "0",
+  });
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
@@ -54,7 +61,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/" />}
             icon={homeSVG({ color: getIconColor("home") })}
             onClick={() => handleMenuItemClick("home")}
-            style={getTextStyle("home")}
+            style={getMenuItemStyle("home")}
           >
             Tổng quan
           </MenuItem>
@@ -62,7 +69,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/students" />}
             icon={studentSVG({ color: getIconColor("students") })}
             onClick={() => handleMenuItemClick("students")}
-            style={getTextStyle("students")}
+            style={getMenuItemStyle("students")}
           >
             Học sinh
           </MenuItem>
@@ -70,7 +77,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/teachers" />}
             icon={teacherIcon({ color: getIconColor("teachers") })}
             onClick={() => handleMenuItemClick("teachers")}
-            style={getTextStyle("teachers")}
+            style={getMenuItemStyle("teachers")}
           >
             Giáo viên
           </MenuItem>
@@ -78,7 +85,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/finance" />}
             icon={financeIcon({ color: getIconColor("finance") })}
             onClick={() => handleMenuItemClick("finance")}
-            style={getTextStyle("finance")}
+            style={getMenuItemStyle("finance")}
           >
             Tài chính
           </MenuItem>
@@ -86,7 +93,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/meals" />}
             icon={mealIcon({ color: getIconColor("meals") })}
             onClick={() => handleMenuItemClick("meals")}
-            style={getTextStyle("meals")}
+            style={getMenuItemStyle("meals")}
           >
             Bữa ăn
           </MenuItem>
@@ -94,7 +101,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/users" />}
             icon={userIcon({ color: getIconColor("users") })}
             onClick={() => handleMenuItemClick("users")}
-            style={getTextStyle("users")}
+            style={getMenuItemStyle("users")}
           >
             Người dùng
           </MenuItem>
@@ -102,7 +109,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             component={<Link to="/messages" />}
             icon={messageIcon({ color: getIconColor("messages") })}
             onClick={() => handleMenuItemClick("messages")}
-            style={getTextStyle("messages")}
+            style={getMenuItemStyle("messages")}
           >
             Tin nhắn
           </MenuItem>
