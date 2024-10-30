@@ -282,3 +282,20 @@ const generateTeachers = (numTeachers: number) => {
 
 // Generate 20 teachers
 export const TeacherList = generateTeachers(20);
+
+const generateTradeData = (numEntries: number) => {
+  const tradeData = [];
+  for (let i = 0; i < numEntries; i++) {
+    tradeData.push({
+      isUp: Math.random() > 0.5,
+      studentID: `#${uuidv4().slice(0, 8)}`,
+      date: `10/${String(i + 1).padStart(2, "0")}/2024`,
+      amount: `đ ${Math.floor(Math.random() * 5000000) + 1000000}`,
+      left: `đ ${Math.floor(Math.random() * 1000000000) + 100000000}`,
+    });
+  }
+  return tradeData;
+};
+
+// Generate 20 more trade data entries
+export const TradeData = generateTradeData(20);

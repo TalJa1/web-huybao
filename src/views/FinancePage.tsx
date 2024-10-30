@@ -1,9 +1,7 @@
 import {
   Box,
   Chip,
-  MenuItem,
   Pagination,
-  Select,
   SelectChangeEvent,
   Typography,
 } from "@mui/material";
@@ -13,12 +11,13 @@ import TopLayout from "../components/TopLayout";
 import {
   bellIcon,
   chivsthuIcon,
+  downTraddeIcon,
   foodFeeIcon,
-  printIcon,
   settingIcon,
   studentSVG,
   teacherIcon,
   threeDotsIcon,
+  upTradeIcon,
 } from "../assets/iconSVG";
 import { Line } from "react-chartjs-2";
 import {
@@ -32,7 +31,11 @@ import {
   Legend,
 } from "chart.js";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { extendedHomeListStudent, StudentAvatar } from "../services/renderData";
+import {
+  extendedHomeListStudent,
+  StudentAvatar,
+  TradeData,
+} from "../services/renderData";
 import { StudentHomeProps } from "../services/typeProps";
 ChartJS.register(
   CategoryScale,
@@ -132,6 +135,20 @@ const Main: React.FC = () => {
     indexOfFirstStudent,
     indexOfLastStudent
   );
+
+  const [tradePage, setTradePage] = useState<number>(1);
+  const tradesPerPage = 5;
+
+  const handleTradePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setTradePage(value);
+  };
+
+  const indexOfLastTrade = tradePage * tradesPerPage;
+  const indexOfFirstTrade = indexOfLastTrade - tradesPerPage;
+  const currentTrades = TradeData.slice(indexOfFirstTrade, indexOfLastTrade);
 
   return (
     <Box sx={{ padding: "20px" }}>
@@ -354,8 +371,8 @@ const Main: React.FC = () => {
         <Line data={data} options={options} />
       </Box>
       <Box sx={{ marginY: 3 }}>
-        <Grid container>
-          <Grid size={{ md: 7, xs: 12 }}>
+        <Grid container columnSpacing={2}>
+          <Grid size={{ md: 6, xs: 12 }}>
             <Box
               sx={{
                 backgroundColor: "white",
@@ -414,7 +431,6 @@ const Main: React.FC = () => {
                             <Typography>{student.fee}</Typography>
                           </Grid>
                           <Grid container size={2}>
-                            <Grid size={6}>{printIcon({})}</Grid>
                             <Grid size={6}>{threeDotsIcon({})}</Grid>
                           </Grid>
                         </Grid>
@@ -443,7 +459,70 @@ const Main: React.FC = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid size={{ md: 5, xs: 12 }}></Grid>
+          <Grid size={{ md: 6, xs: 12 }}>
+            <Box
+              sx={{
+                backgroundColor: "white",
+                padding: "20px",
+                borderRadius: "20px",
+              }}
+            >
+              <Box sx={{ color: "black", fontSize: "24px", fontWeight: "700" }}>
+                Giao dịch
+              </Box>
+              <Box sx={{ overflowX: "auto" }}>
+                <Box sx={{ minWidth: "800px" }}>
+                  {currentTrades.map((trade, index) => (
+                    <Grid
+                      container
+                      key={index}
+                      sx={{
+                        marginBottom: 1,
+                        padding: 1,
+                        alignItems: "center",
+                      }}
+                    >
+                      <Grid
+                        size={2}
+                        display={"flex"}
+                        alignItems={"center"}
+                        justifyContent={"center"}
+                      >
+                        {trade.isUp ? upTradeIcon({}) : downTraddeIcon({})}
+                      </Grid>
+                      <Grid size={3}>
+                        <Typography>
+                          <Box>{trade.studentID}</Box>
+                          <Box>{trade.date}</Box>
+                        </Typography>
+                      </Grid>
+
+                      <Grid size={3}>
+                        <Typography>{trade.amount}</Typography>
+                      </Grid>
+                      <Grid size={2}>
+                        <Typography>{trade.left}</Typography>
+                      </Grid>
+                      <Grid container size={2}>
+                        <Grid size={6}>{threeDotsIcon({})}</Grid>
+                      </Grid>
+                    </Grid>
+                  ))}
+                </Box>
+              </Box>
+              <Grid container display={"flex"} alignItems={"center"}>
+                <Grid size={12} display={"flex"} justifyContent={"flex-end"}>
+                  <Pagination
+                    count={Math.ceil(TradeData.length / tradesPerPage)}
+                    page={tradePage}
+                    color="primary"
+                    onChange={handleTradePageChange}
+                    sx={{ marginTop: 2 }}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
+          </Grid>
         </Grid>
       </Box>
     </Box>

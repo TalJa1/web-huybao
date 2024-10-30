@@ -9,7 +9,67 @@ export const example: React.FC<IconSVGProps> = ({ width, height, color }) => {
   return <></>;
 };
 
-export const chivsthuIcon: React.FC<IconSVGProps> = ({ width, height, color }) => {
+export const upTradeIcon: React.FC<IconSVGProps> = ({
+  width,
+  height,
+  color,
+}) => {
+  width = width ?? 29;
+  height = height ?? 30;
+  color = color ?? "white";
+  return (
+    <svg
+      width="72"
+      height="72"
+      viewBox="0 0 72 72"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="72" height="72" rx="36" fill="#27B24A" />
+      <path
+        d="M52.625 26.5417L40.8255 38.3412C39.4261 39.7406 37.1572 39.7406 35.7579 38.3412L33.6588 36.2422C32.2594 34.8428 29.9906 34.8428 28.5912 36.2422L20.375 44.4584M52.625 26.5417H41.875M52.625 26.5417V37.2917"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const downTraddeIcon: React.FC<IconSVGProps> = ({
+  width,
+  height,
+  color,
+}) => {
+  width = width ?? 29;
+  height = height ?? 30;
+  color = color ?? "white";
+  return (
+    <svg
+      width="72"
+      height="72"
+      viewBox="0 0 72 72"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="72" height="72" rx="36" fill="#F72B2B" />
+      <path
+        d="M52.625 44.4583L40.8255 32.6588C39.4261 31.2594 37.1572 31.2594 35.7579 32.6588L33.6588 34.7578C32.2594 36.1572 29.9906 36.1572 28.5912 34.7578L20.375 26.5416M52.625 44.4583H41.875M52.625 44.4583V33.7083"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const chivsthuIcon: React.FC<IconSVGProps> = ({
+  width,
+  height,
+  color,
+}) => {
   width = width ?? 12;
   height = height ?? 12;
   color = color ?? "#FCC43E";
