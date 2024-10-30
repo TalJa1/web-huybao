@@ -9,6 +9,27 @@ import {
   studentSVG,
   teacherIcon,
 } from "../assets/iconSVG";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const FinancePage = () => {
   return (
@@ -19,6 +40,57 @@ const FinancePage = () => {
 };
 
 const Main: React.FC = () => {
+  const data = {
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    datasets: [
+      {
+        label: "Chi",
+        data: [65, 59, 70, 81, 56, 55, 40, 45, 60, 70, 75, 60],
+        borderColor: "#FCC43E",
+        backgroundColor: "#FCC43E",
+        fill: false,
+        tension: 0.4,
+      },
+      {
+        label: "Thu",
+        data: [28, 48, 40, 19, 76, 27, 70, 65, 60, 50, 45, 30],
+        borderColor: "#FB7D5B",
+        backgroundColor: "#FB7D5B",
+        fill: false,
+        tension: 0.4,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top" as const,
+        labels: {
+          usePointStyle: true,
+          pointStyle: "circle",
+        },
+      },
+      title: {
+        display: true,
+        text: "Phân tích tài chính",
+      },
+    },
+  };
   return (
     <Box sx={{ padding: "20px" }}>
       <Grid container>
@@ -169,6 +241,16 @@ const Main: React.FC = () => {
           </Grid>
         </Grid>
       </Grid>
+      <Box
+        sx={{
+          marginTop: "20px",
+          backgroundColor: "white",
+          borderRadius: "20px",
+          padding: "20px",
+        }}
+      >
+        <Line data={data} options={options} />
+      </Box>
     </Box>
   );
 };
