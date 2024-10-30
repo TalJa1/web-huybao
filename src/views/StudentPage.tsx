@@ -15,6 +15,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Chip,
 } from "@mui/material";
 import TopLayout from "../components/TopLayout";
 import { StudentList } from "../services/renderData";
@@ -207,7 +208,9 @@ const Main: React.FC = () => {
                   <TableCell sx={{ color: "#818181" }}>{student.dob}</TableCell>
                   <TableCell>{student.parentName}</TableCell>
                   <TableCell>{student.hometown}</TableCell>
-                  <TableCell>{student.class}</TableCell>
+                  <TableCell>
+                    <Chip label={student.class} color="warning" />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
