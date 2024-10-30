@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Box } from "@mui/material";
-import { homeSVG, studentSVG } from "../assets/iconSVG";
+import {
+  financeIcon,
+  homeSVG,
+  mealIcon,
+  messageIcon,
+  studentSVG,
+  teacherIcon,
+  userIcon,
+} from "../assets/iconSVG";
 
 const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [activeItem, setActiveItem] = useState<string>("home");
+
+  const handleMenuItemClick = (item: string) => {
+    setActiveItem(item);
+  };
+
+  const getIconColor = (item: string) =>
+    activeItem === item ? "#1568B1" : "white";
+
+  const getTextStyle = (item: string) => ({
+    color: getIconColor(item),
+    fontSize: "18px",
+    fontWeight: activeItem === item ? 700 : 400,
+  });
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
@@ -30,21 +53,60 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <Menu>
           <MenuItem
             component={<Link to="/" />}
-            icon={homeSVG({ width: 40, height: 40, color: "white" })}
+            icon={homeSVG({ color: getIconColor("home") })}
+            onClick={() => handleMenuItemClick("home")}
+            style={getTextStyle("home")}
           >
             Tổng quan
           </MenuItem>
           <MenuItem
-            component={<Link to="/" />}
-            icon={studentSVG({ width: 40, height: 40, color: "white" })}
+            component={<Link to="/students" />}
+            icon={studentSVG({ color: getIconColor("students") })}
+            onClick={() => handleMenuItemClick("students")}
+            style={getTextStyle("students")}
           >
             Học sinh
           </MenuItem>
-          <MenuItem component={<Link to="/" />}>Giáo viên</MenuItem>
-          <MenuItem component={<Link to="/" />}>Tài chính</MenuItem>
-          <MenuItem component={<Link to="/" />}>Bữa ăn</MenuItem>
-          <MenuItem component={<Link to="/" />}>Người dùng</MenuItem>
-          <MenuItem component={<Link to="/" />}>Tin nhắn</MenuItem>
+          <MenuItem
+            component={<Link to="/teachers" />}
+            icon={teacherIcon({ color: getIconColor("teachers") })}
+            onClick={() => handleMenuItemClick("teachers")}
+            style={getTextStyle("teachers")}
+          >
+            Giáo viên
+          </MenuItem>
+          <MenuItem
+            component={<Link to="/finance" />}
+            icon={financeIcon({ color: getIconColor("finance") })}
+            onClick={() => handleMenuItemClick("finance")}
+            style={getTextStyle("finance")}
+          >
+            Tài chính
+          </MenuItem>
+          <MenuItem
+            component={<Link to="/meals" />}
+            icon={mealIcon({ color: getIconColor("meals") })}
+            onClick={() => handleMenuItemClick("meals")}
+            style={getTextStyle("meals")}
+          >
+            Bữa ăn
+          </MenuItem>
+          <MenuItem
+            component={<Link to="/users" />}
+            icon={userIcon({ color: getIconColor("users") })}
+            onClick={() => handleMenuItemClick("users")}
+            style={getTextStyle("users")}
+          >
+            Người dùng
+          </MenuItem>
+          <MenuItem
+            component={<Link to="/messages" />}
+            icon={messageIcon({ color: getIconColor("messages") })}
+            onClick={() => handleMenuItemClick("messages")}
+            style={getTextStyle("messages")}
+          >
+            Tin nhắn
+          </MenuItem>
         </Menu>
       </Sidebar>
       <div style={{ flex: 1, padding: "20px" }}>{children}</div>
