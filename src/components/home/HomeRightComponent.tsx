@@ -88,6 +88,18 @@ const Main: React.FC = () => {
             </Grid>
           </Grid>
         ))}
+        <Button
+          sx={{
+            marginY: 2,
+            backgroundColor: "black",
+            color: "white",
+            borderRadius: 10,
+            paddingY: 1.5,
+            width: "100%",
+          }}
+        >
+          Xem thêm
+        </Button>
       </Box>
     </Box>
   );
