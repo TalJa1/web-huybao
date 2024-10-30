@@ -45,7 +45,7 @@ export const threeDotsIcon: React.FC<IconSVGProps> = ({
 export const printIcon: React.FC<IconSVGProps> = ({ width, height, color }) => {
   width = width ?? 29;
   height = height ?? 30;
-  color = color ?? "white";
+  color = color ?? "black";
   return (
     <svg
       width={width}
