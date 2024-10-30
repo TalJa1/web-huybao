@@ -42,6 +42,10 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
             backgroundColor: "#1568B1",
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "auto",
           },
         }}
       >
@@ -115,7 +119,14 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </MenuItem>
         </Menu>
       </Sidebar>
-      <div style={{ flex: 1, padding: "20px", backgroundColor: "#E7F5FF" }}>
+      <div
+        style={{
+          flex: 1,
+          padding: "20px",
+          overflow: "auto",
+          backgroundColor: "#E7F5FF",
+        }}
+      >
         {children}
       </div>
     </div>
