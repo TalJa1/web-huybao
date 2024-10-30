@@ -6,6 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { foodFeeIcon, studentSVG, teacherIcon } from "../assets/iconSVG";
 import chart1 from "../assets/home/chart1.png";
 import chart2 from "../assets/home/chart2.png";
+import ListStudentHomeComponent from "../components/home/ListStudentHomeComponent";
 
 const Home = () => {
   return (
@@ -151,7 +152,7 @@ const Main: React.FC = () => {
                     sx={{
                       height: "10px",
                       width: "10px",
-                      borderRadius:'4px',
+                      borderRadius: "4px",
                       backgroundColor: "#FCC43E",
                     }}
                   />
@@ -167,7 +168,7 @@ const Main: React.FC = () => {
                     sx={{
                       height: "10px",
                       width: "10px",
-                      borderRadius:'4px',
+                      borderRadius: "4px",
                       backgroundColor: "#EE7223",
                     }}
                   />
@@ -183,7 +184,7 @@ const Main: React.FC = () => {
                     sx={{
                       height: "10px",
                       width: "10px",
-                      borderRadius:'4px',
+                      borderRadius: "4px",
                       backgroundColor: "#1568B1",
                     }}
                   />
@@ -192,6 +193,9 @@ const Main: React.FC = () => {
               </Grid>
             </Grid>
           </Grid>
+          <Box sx={{ width: "100%" }}>
+            <ListStudentHomeComponent />
+          </Box>
         </Grid>
         <Grid size={{ md: 3, xs: 12 }}></Grid>
       </Grid>
