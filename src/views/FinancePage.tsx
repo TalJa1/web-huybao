@@ -41,8 +41,8 @@ const Main: React.FC = () => {
           borderRadius: "20px",
         }}
       >
-        <Grid size={{ md: 4, xs: 12 }} container alignItems="center">
-          <Grid size={2}>
+        <Grid size={{ md: 3, xs: 12 }} container alignItems="center">
+          <Grid size={3}>
             <Box
               sx={{
                 backgroundColor: "#1568B1",
@@ -57,7 +57,7 @@ const Main: React.FC = () => {
               {studentSVG({ width: 30, height: 30, color: "white" })}
             </Box>
           </Grid>
-          <Grid size={10}>
+          <Grid size={9}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Box sx={{ color: "#818181", fontSize: 18 }}>Học sinh</Box>
               <Box sx={{ fontSize: 36, fontWeight: "700", color: "black" }}>
@@ -76,8 +76,8 @@ const Main: React.FC = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid size={{ md: 4, xs: 12 }} container alignItems="center">
-          <Grid size={2}>
+        <Grid size={{ md: 3, xs: 12 }} container alignItems="center">
+          <Grid size={3}>
             <Box
               sx={{
                 backgroundColor: "#EE7223",
@@ -92,7 +92,7 @@ const Main: React.FC = () => {
               {teacherIcon({ width: 30, height: 30, color: "white" })}
             </Box>
           </Grid>
-          <Grid size={10}>
+          <Grid size={9}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Box sx={{ color: "#818181", fontSize: 18 }}>Giáo viên</Box>
               <Box sx={{ fontSize: 36, fontWeight: "700", color: "black" }}>
@@ -111,7 +111,7 @@ const Main: React.FC = () => {
             </Box>
           </Grid>
         </Grid>
-        <Grid size={{ md: 4, xs: 12 }} container alignItems="center">
+        <Grid size={{ md: 6, xs: 12 }} container alignItems="center">
           <Grid size={2}>
             <Box
               sx={{
@@ -138,9 +138,21 @@ const Main: React.FC = () => {
                   wordWrap: "break-word",
                   overflowWrap: "break-word",
                   width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  overflow: "hidden",
                 }}
               >
                 1.200.000.000
+                <img
+                  alt=""
+                  src={require("../assets/finance/g1.png")}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    marginLeft: "10px",
+                  }}
+                />
               </Box>
               <Box
                 sx={{
