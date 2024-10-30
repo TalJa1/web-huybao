@@ -7,6 +7,7 @@ import { foodFeeIcon, studentSVG, teacherIcon } from "../assets/iconSVG";
 import chart1 from "../assets/home/chart1.png";
 import chart2 from "../assets/home/chart2.png";
 import ListStudentHomeComponent from "../components/home/ListStudentHomeComponent";
+import HomeRightComponent from "../components/home/HomeRightComponent";
 
 const Home = () => {
   return (
@@ -197,7 +198,9 @@ const Main: React.FC = () => {
             <ListStudentHomeComponent />
           </Box>
         </Grid>
-        <Grid size={{ md: 3, xs: 12 }} sx={{ backgroundColor: "white" }}></Grid>
+        <Grid size={{ md: 3, xs: 12 }} sx={{ backgroundColor: "white" }}>
+          <HomeRightComponent />
+        </Grid>
       </Grid>
     </Box>
   );

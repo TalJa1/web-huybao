@@ -60,20 +60,54 @@ export const homeListStudent = [
     fee: "đ 2.600.000",
   },
 ];
+const additionalNames = [
+  "Nguyễn Văn B",
+  "Trần Thị C",
+  "Lê Văn D",
+  "Hoàng Thị E",
+  "Phạm Văn F",
+  "Nguyễn Thị G",
+  "Trần Văn H",
+  "Lê Thị I",
+  "Hoàng Văn J",
+  "Phạm Thị K",
+  "Nguyễn Văn L",
+  "Trần Thị M",
+  "Lê Văn N",
+  "Hoàng Thị O",
+  "Phạm Văn P",
+  "Nguyễn Thị Q",
+  "Trần Văn R",
+  "Lê Thị S",
+  "Hoàng Văn T",
+  "Phạm Thị U",
+  "Nguyễn Văn V",
+  "Trần Thị W",
+  "Lê Văn X",
+  "Hoàng Thị Y",
+  "Phạm Văn Z",
+];
 
 // Function to generate more students
 const generateMoreStudents = (baseList: any[], count: number) => {
   const newList = [...baseList];
-  baseList.forEach((student: { name: any; class: any; id: any; fee: any; }, index: any) => {
+  let nameIndex = 0;
+
+  baseList.forEach((student, index) => {
     for (let i = 1; i <= count; i++) {
+      if (nameIndex >= additionalNames.length) {
+        nameIndex = 0; // Reset index if we run out of names
+      }
       newList.push({
-        name: `${student.name} ${i}`,
+        name: additionalNames[nameIndex],
         class: student.class,
         id: `${student.id}${i}`,
         fee: student.fee,
       });
+      nameIndex++;
     }
   });
+
   return newList;
 };
 
@@ -88,4 +122,31 @@ export const StudentAvatar = [
   require("../assets/home/5.png"),
   require("../assets/home/6.png"),
   require("../assets/home/7.png"),
-]
+];
+
+export const OnlineStudent = [
+  {
+    name: "Nguyễn Thị Huyền",
+    class: "11a1",
+  },
+  {
+    name: "Trần Văn Minh",
+    class: "11a2",
+  },
+  {
+    name: "Lê Thị Lan",
+    class: "11a3",
+  },
+  {
+    name: "Phạm Văn Tuấn",
+    class: "11a4",
+  },
+  {
+    name: "Nguyễn Thị Mai",
+    class: "11a5",
+  },
+  {
+    name: "Hoàng Văn Bình",
+    class: "11a6",
+  },
+];
