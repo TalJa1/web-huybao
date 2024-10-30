@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -15,6 +15,7 @@ import {
 
 const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [activeItem, setActiveItem] = useState<string>("home");
+  const [isMinimized, setIsMinimized] = useState<boolean>(false);
 
   const handleMenuItemClick = (item: string) => {
     setActiveItem(item);
@@ -36,9 +37,23 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     borderBottomLeftRadius: activeItem === item ? "40px" : "0",
   });
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMinimized(window.innerWidth < 1200);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call initially to set the state based on the initial window size
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
+      collapsed={isMinimized}
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
             backgroundColor: "#1568B1",
@@ -46,6 +61,8 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             display: "flex",
             flexDirection: "column",
             overflow: "auto",
+            width: isMinimized ? "80px" : "250px", // Adjust width based on isMinimized state
+            transition: "width 0.3s", // Smooth transition for width change
           },
         }}
       >
@@ -58,7 +75,11 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             width: "100%",
           }}
         >
-          <img style={{ width: "70%" }} alt="logo" src={logo} />
+          <img
+            style={{ width: isMinimized ? "50%" : "70%" }}
+            alt="logo"
+            src={logo}
+          />
         </Box>
         <Menu>
           <MenuItem
@@ -67,7 +88,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("home")}
             style={getMenuItemStyle("home")}
           >
-            Tổng quan
+            {!isMinimized && "Tổng quan"}
           </MenuItem>
           <MenuItem
             component={<Link to="/students" />}
@@ -75,7 +96,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("students")}
             style={getMenuItemStyle("students")}
           >
-            Học sinh
+            {!isMinimized && "Học sinh"}
           </MenuItem>
           <MenuItem
             component={<Link to="/teachers" />}
@@ -83,7 +104,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("teachers")}
             style={getMenuItemStyle("teachers")}
           >
-            Giáo viên
+            {!isMinimized && "Giáo viên"}
           </MenuItem>
           <MenuItem
             component={<Link to="/finance" />}
@@ -91,7 +112,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("finance")}
             style={getMenuItemStyle("finance")}
           >
-            Tài chính
+            {!isMinimized && "Tài chính"}
           </MenuItem>
           <MenuItem
             component={<Link to="/meals" />}
@@ -99,7 +120,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("meals")}
             style={getMenuItemStyle("meals")}
           >
-            Bữa ăn
+            {!isMinimized && "Bữa ăn"}
           </MenuItem>
           <MenuItem
             component={<Link to="/users" />}
@@ -107,7 +128,7 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("users")}
             style={getMenuItemStyle("users")}
           >
-            Người dùng
+            {!isMinimized && "Người dùng"}
           </MenuItem>
           <MenuItem
             component={<Link to="/messages" />}
@@ -115,18 +136,11 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             onClick={() => handleMenuItemClick("messages")}
             style={getMenuItemStyle("messages")}
           >
-            Tin nhắn
+            {!isMinimized && "Tin nhắn"}
           </MenuItem>
         </Menu>
       </Sidebar>
-      <div
-        style={{
-          flex: 1,
-          padding: "20px",
-          overflow: "auto",
-          backgroundColor: "#E7F5FF",
-        }}
-      >
+      <div style={{ flex: 1, padding: "20px", overflow: "auto" }}>
         {children}
       </div>
     </div>
