@@ -75,42 +75,52 @@ const ListStudentHomeComponent = () => {
             </Select>
           </Grid>
         </Grid>
-        <Box>
-          {currentStudents.map((student, index) => (
-            <Grid
-              container
-              key={student.id}
-              sx={{
-                marginBottom: 1,
-                padding: 1,
-                alignItems: "center",
-              }}
-            >
-              <Grid size={1}>
-                <img
-                  src={StudentAvatar[index % StudentAvatar.length]}
-                  alt={student.name}
-                  style={{ borderRadius: "50%", width: "50px", height: "50px" }}
-                />
+        <Box sx={{ overflowX: "auto" }}>
+          <Box sx={{ minWidth: "800px" }}>
+            {currentStudents.map((student, index) => (
+              <Grid
+                container
+                key={student.id}
+                sx={{
+                  marginBottom: 1,
+                  padding: 1,
+                  alignItems: "center",
+                }}
+              >
+                <Grid size={1}>
+                  <img
+                    src={StudentAvatar[index % StudentAvatar.length]}
+                    alt={student.name}
+                    style={{
+                      borderRadius: "50%",
+                      width: "50px",
+                      height: "50px",
+                    }}
+                  />
+                </Grid>
+                <Grid size={3}>
+                  <Typography>{student.name}</Typography>
+                </Grid>
+                <Grid size={2}>
+                  <Typography>ID {student.id}</Typography>
+                </Grid>
+                <Grid size={2}>
+                  <Chip
+                    label={student.class}
+                    variant="filled"
+                    color="warning"
+                  />
+                </Grid>
+                <Grid size={2}>
+                  <Typography>{student.fee}</Typography>
+                </Grid>
+                <Grid container size={2}>
+                  <Grid size={6}>{printIcon({})}</Grid>
+                  <Grid size={6}>{threeDotsIcon({})}</Grid>
+                </Grid>
               </Grid>
-              <Grid size={3}>
-                <Typography>{student.name}</Typography>
-              </Grid>
-              <Grid size={2}>
-                <Typography>ID {student.id}</Typography>
-              </Grid>
-              <Grid size={2}>
-                <Chip label={student.class} variant="filled" color="warning" />
-              </Grid>
-              <Grid size={2}>
-                <Typography>{student.fee}</Typography>
-              </Grid>
-              <Grid container size={2}>
-                <Grid size={6}>{printIcon({})}</Grid>
-                <Grid size={6}>{threeDotsIcon({})}</Grid>
-              </Grid>
-            </Grid>
-          ))}
+            ))}
+          </Box>
         </Box>
       </Box>
       <Grid container size={12} display={"flex"} alignItems={"center"}>

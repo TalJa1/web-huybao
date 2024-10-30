@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React from "react";
 import { bellIcon, moveToChatIcon, settingIcon } from "../../assets/iconSVG";
