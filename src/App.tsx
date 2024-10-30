@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import Home from "./views/Home";
 import StudentPage from "./views/StudentPage";
 import TeacherPage from "./views/TeacherPage";
+import FinancePage from "./views/FinancePage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/students" element={<StudentPage />} />
         <Route path="/teachers" element={<TeacherPage />} />
+        <Route path="/finance" element={<FinancePage />} />
       </Routes>
     </BrowserRouter>
   );
