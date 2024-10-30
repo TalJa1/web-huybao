@@ -17,7 +17,7 @@ const Main: React.FC = () => {
   return (
     <Box>
       <Grid container spacing={2}>
-        <Grid size={{md: 9, xs: 12}} container>
+        <Grid size={{ md: 9, xs: 12 }} container>
           <Grid size={12} container sx={{ alignItems: "center" }}>
             <Grid
               size={8}
@@ -121,8 +121,19 @@ const Main: React.FC = () => {
               </Grid>
             </Grid>
           </Grid>
+          <Grid size={12} container>
+            <Grid
+              size={{ md: 6, xs: 12 }}
+              sx={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <Box>Tỷ lệ học sinh có tham gia học hôm nay ngày 12/11/2023</Box>
+            </Grid>
+            <Grid size={{ md: 6, xs: 12 }}>
+              <Box>Tỷ lệ học sinh chưa đóng phí theo các khối</Box>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid size={{md: 3, xs: 12}}></Grid>
+        <Grid size={{ md: 3, xs: 12 }}></Grid>
       </Grid>
     </Box>
   );
