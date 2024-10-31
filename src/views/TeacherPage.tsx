@@ -12,6 +12,7 @@ import {
   Avatar,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from "react-router-dom";
 import TopLayout from "../components/TopLayout";
 import Grid from "@mui/material/Grid2";
 import { TeacherList } from "../services/renderData";
@@ -30,6 +31,7 @@ const Main: React.FC = () => {
   const [selectedSubject, setSelectedSubject] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const teachersPerPage = 12;
+  const navigate = useNavigate();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -62,6 +64,12 @@ const Main: React.FC = () => {
     indexOfFirstTeacher,
     indexOfLastTeacher
   );
+  
+  const handleTeacherClick = (teacher: { name: string; subject: string }) => {
+    navigate(`/teachers/${teacher.name}`, {
+      state: { name: teacher.name, subject: teacher.subject },
+    });
+  };
 
   return (
     <Box sx={{ padding: "20px" }}>
@@ -170,6 +178,7 @@ const Main: React.FC = () => {
               position: "relative",
             }}
             key={teacher.name}
+            onClick={() => handleTeacherClick(teacher)}
           >
             <Box
               sx={{
