@@ -63,7 +63,7 @@ const BoxInputTop = () => {
                 />
               ) : (
                 <Typography color="blue" sx={{ textAlign: "center" }}>
-                  Drag and drop or click here to select file
+                  Click here to select file
                 </Typography>
               )}
             </Box>
