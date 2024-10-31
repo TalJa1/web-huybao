@@ -18,7 +18,7 @@ const BoxInputBottom = () => {
         <Grid size={{ md: 6, xs: 12 }}>
           <InputComponent label="Họ và tên" placeholder="Enter full name" />
           <InputComponent label="Email *" placeholder="Enter email" />
-          <InputComponent label="Địa chỉ *" placeholder="Enter address" />
+          <InputComponent label="Địa chỉ *" placeholder="Enter address" isMultipleLine />
         </Grid>
 
         {/* Right Column */}
