@@ -1,15 +1,8 @@
 import Grid from "@mui/material/Grid2";
 import React from "react";
 import { bellIcon, settingIcon } from "../../assets/iconSVG";
-import {
-  Box,
-  Button,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
-} from "@mui/material";
-import { mealHomeList, UserRightData } from "../../services/renderData";
+import { Box, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { UserRightData } from "../../services/renderData";
 
 const UserRightRendering = () => {
   return (
@@ -32,7 +25,7 @@ const Main: React.FC = () => {
 
   return (
     <Box sx={{ marginTop: 2 }}>
-      <Box sx={{ color: "#363B64", fontSize: "24px", fontWeight: "700" }}>
+      <Box sx={{ color: "#000000", fontSize: "24px", fontWeight: "700" }}>
         Lastest Activity
       </Box>
       <Stepper orientation="vertical" sx={{ marginTop: 2 }}>
