@@ -1,4 +1,4 @@
-import { Box, Chip, Pagination, Typography } from "@mui/material";
+import { Box, Chip, Pagination, Tab, Tabs, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../components/TopLayout";
@@ -22,6 +22,7 @@ const MealPage = () => {
 
 const Main: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [selectedTab, setSelectedTab] = useState<string>("Tất cả");
   const mealsPerPage = 5;
 
   const handlePageChange = (
@@ -31,9 +32,19 @@ const Main: React.FC = () => {
     setCurrentPage(value);
   };
 
+  const handleTabChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    setSelectedTab(newValue);
+    setCurrentPage(1); // Reset to first page when tab changes
+  };
+
+  const filteredMeals =
+    selectedTab === "Tất cả"
+      ? MealData
+      : MealData.filter((meal) => meal.catergory === selectedTab);
+
   const indexOfLastMeal = currentPage * mealsPerPage;
   const indexOfFirstMeal = indexOfLastMeal - mealsPerPage;
-  const currentMeals = MealData.slice(indexOfFirstMeal, indexOfLastMeal);
+  const currentMeals = filteredMeals.slice(indexOfFirstMeal, indexOfLastMeal);
 
   return (
     <Box sx={{ padding: "20px" }}>
@@ -45,6 +56,37 @@ const Main: React.FC = () => {
         </Grid>
         <Grid size={4}>
           <Header />
+        </Grid>
+      </Grid>
+      <Grid container alignItems="center" sx={{ marginTop: 2 }}>
+        <Grid size={7}>
+          <Typography sx={{ color: "#000000", fontSize: "24px", fontWeight: "700" }}>
+            Thực đơn
+          </Typography>
+        </Grid>
+        <Grid size={5}>
+          <Tabs
+            value={selectedTab}
+            onChange={handleTabChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            sx={{
+              borderBottom: "1px solid #e0e0e0",
+              "& .MuiTab-root": {
+                minWidth: "auto",
+                flex: 1,
+              },
+              "& .Mui-selected": {
+                borderBottom: "2px solid #1568B1",
+              },
+            }}
+          >
+            <Tab label="Tất cả" value="Tất cả" />
+            <Tab label="Bữa sáng" value="Bữa sáng" />
+            <Tab label="Bữa trưa" value="Bữa trưa" />
+            <Tab label="Vặt" value="Vặt" />
+          </Tabs>
         </Grid>
       </Grid>
       {/* Render here */}
