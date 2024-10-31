@@ -2,8 +2,16 @@ import { Box } from "@mui/material";
 import React from "react";
 import { useLocation } from "react-router";
 import Grid from "@mui/material/Grid2";
-import { bellIcon, settingIcon, threeDotsIcon } from "../../assets/iconSVG";
+import {
+  bellIcon,
+  locationIcon,
+  mail1Icon,
+  phone1Icon,
+  settingIcon,
+  threeDotsIcon,
+} from "../../assets/iconSVG";
 import TopLayout from "../../components/TopLayout";
+import RenderRightComponent from "../../components/teacher&student/RenderRightComponent";
 
 const TeacherDetail = () => {
   const location = useLocation();
@@ -87,10 +95,108 @@ const Main: React.FC<{ name: string; subject: string; img: any }> = ({
                 </Box>
                 <Box sx={{ color: "#818181", fontSize: "18px" }}>{subject}</Box>
               </Box>
+              <Grid container marginY={2}>
+                <Grid
+                  display={"flex"}
+                  alignItems={"center"}
+                  columnGap={1}
+                  size={{ md: 3, xs: 12 }}
+                >
+                  {locationIcon({})} Hà Nội
+                </Grid>
+                <Grid
+                  display={"flex"}
+                  alignItems={"center"}
+                  columnGap={1}
+                  size={{ md: 3, xs: 12 }}
+                >
+                  10/09/1987
+                </Grid>
+                <Grid
+                  display={"flex"}
+                  alignItems={"center"}
+                  columnGap={1}
+                  size={{ md: 3, xs: 12 }}
+                >
+                  {phone1Icon({})} +12 345 6789 0
+                </Grid>
+                <Grid
+                  display={"flex"}
+                  alignItems={"center"}
+                  size={{ md: 3, xs: 12 }}
+                  columnGap={1}
+                >
+                  {mail1Icon({})}Emain@gmail.com
+                </Grid>
+              </Grid>
+              <Box>
+                <Box
+                  sx={{
+                    color: "black",
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Giới thiệu:
+                </Box>
+                <Box>
+                  Thầy giáo là người tận tâm truyền đạt kiến thức và khơi dậy
+                  đam mê học tập cho học sinh. Với sự kiên nhẫn và nhiệt huyết,
+                  thầy không chỉ giảng dạy mà còn là người bạn đồng hành, luôn
+                  lắng nghe và hỗ trợ từng học trò trên con đường trưởng thành.
+                </Box>
+              </Box>
+              <Box>
+                <Box
+                  sx={{
+                    color: "black",
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Học vấn:
+                </Box>
+                <Box>
+                  {/* render as unorder list */}
+                  <ul>
+                    <li>{subject} Major, University Akademi Historia</li>
+                    <sub>2010 - 2014</sub>
+                    <li>Master of {subject}, University Akademi Historia</li>
+                    <sub>2017-2020</sub>
+                  </ul>
+                </Box>
+              </Box>
+              <Box>
+                <Box
+                  sx={{
+                    color: "black",
+                    fontSize: "24px",
+                    fontWeight: "700",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Kinh nghiệm giảng dạy:
+                </Box>
+                <Box>
+                  {/* render as unorder list */}
+                  <ul>
+                    <li>{subject} Major, University Akademi Historia</li>
+                    <sub>2010 - 2014</sub>
+                  </ul>
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Grid>
-        <Grid size={{ md: 4, xs: 12 }}></Grid>
+        <Grid size={{ md: 4, xs: 12 }}>
+          <RenderRightComponent
+            label={"Lịch dạy"}
+            subject={subject}
+            color={"#27B24A"}
+          />
+        </Grid>
       </Grid>
     </Box>
   );
