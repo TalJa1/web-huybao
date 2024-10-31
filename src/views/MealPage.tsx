@@ -200,8 +200,8 @@ const Main: React.FC = () => {
             ))}
           </Box>
           <Box display="flex" justifyContent="right" sx={{ marginTop: 2 }}>
-            <Pagination
-              count={Math.ceil(MealData.length / mealsPerPage)}
+          <Pagination
+              count={Math.ceil(filteredMeals.length / mealsPerPage)}
               page={currentPage}
               onChange={handlePageChange}
               color="primary"
