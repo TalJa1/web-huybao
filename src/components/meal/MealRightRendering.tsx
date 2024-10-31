@@ -7,7 +7,6 @@ import { mealHomeList } from "../../services/renderData";
 const MealRightRendering = () => {
   return (
     <Box sx={{ padding: "20px" }}>
-      <Header />
       <Main />
     </Box>
   );
@@ -50,33 +49,6 @@ const Main: React.FC = () => {
         Xem thêm
       </Button>
     </Box>
-  );
-};
-
-const Header: React.FC = () => {
-  return (
-    <Grid container size={12} display={"flex"} alignItems={"center"}>
-      <Grid size={2}>{bellIcon({})}</Grid>
-      <Grid size={2}>{settingIcon({})}</Grid>
-      <Grid size={8} container>
-        <Grid
-          size={6}
-          display="flex"
-          flexDirection="column"
-          alignItems={"flex-end"}
-        >
-          <Grid sx={{ color: "#000000" }}>Thu Hiền</Grid>
-          <Grid sx={{ color: "#818181" }}>Admin</Grid>
-        </Grid>
-        <Grid size={6} display={"flex"} justifyContent={"center"}>
-          <img
-            style={{ width: "40px", height: "40px" }}
-            alt=""
-            src={require("../../assets/home/avatar.png")}
-          />
-        </Grid>
-      </Grid>
-    </Grid>
   );
 };
 
