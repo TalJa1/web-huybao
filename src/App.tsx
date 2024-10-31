@@ -11,6 +11,7 @@ import TeacherDetail from "./views/Teacher/TeacherDetail";
 import StudentDetailPage from "./views/Student/StudentDetailPage";
 import UserPage from "./views/UserPage";
 import MealDetail from "./views/Meal/MealDetail";
+import AddStudent from "./views/Student/AddStudent";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/students" element={<StudentPage />} />
+        <Route path="/addstudents" element={<AddStudent />} />
         <Route path="/students/:name" element={<StudentDetailPage />} />
         <Route path="/teachers" element={<TeacherPage />} />
         <Route path="/teachers/:name" element={<TeacherDetail />} />

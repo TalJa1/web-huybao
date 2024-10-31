@@ -59,6 +59,10 @@ const Main: React.FC = () => {
     navigate(`/students/${student.name}`, { state: { student } });
   };
 
+  const handleNewStudentClick = () => {
+    navigate("/addstudents");
+  };
+
   const students = StudentList; // Add this line to define students
   const filteredStudents = students.filter((student) => {
     const matchesSearchQuery =
@@ -160,6 +164,7 @@ const Main: React.FC = () => {
               variant="contained"
               color="primary"
               sx={{ borderRadius: "40px" }}
+              onClick={handleNewStudentClick}
             >
               + New Student
             </Button>
