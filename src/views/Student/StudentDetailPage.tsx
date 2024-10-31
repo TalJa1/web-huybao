@@ -2,14 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
-import {
-  bellIcon,
-  locationIcon,
-  mail1Icon,
-  phone1Icon,
-  settingIcon,
-  threeDotsIcon,
-} from "../../assets/iconSVG";
+import { bellIcon, settingIcon, threeDotsIcon } from "../../assets/iconSVG";
 import { useLocation } from "react-router";
 import { Student } from "../../services/typeProps";
 import RenderRightComponent from "../../components/teacher&student/RenderRightComponent";
@@ -89,6 +82,8 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
                 </Box>
               </Box>
             </Box>
+            {/* render here */}
+            
           </Box>
         </Grid>
         <Grid size={{ md: 4, xs: 12 }}>
