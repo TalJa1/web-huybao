@@ -47,137 +47,149 @@ const Main: React.FC = () => {
   const currentMeals = filteredMeals.slice(indexOfFirstMeal, indexOfLastMeal);
 
   return (
-    <Box sx={{ padding: "20px" }}>
-      <Grid container>
-        <Grid size={8}>
-          <Box sx={{ color: "#000000", fontSize: "36px", fontWeight: "700" }}>
-            Bữa ăn
-          </Box>
+    <Box sx={{ padding: "20px", overflowX: "auto" }}>
+      <Box sx={{ minWidth: "800px" }}>
+        <Grid container>
+          <Grid size={8}>
+            <Box sx={{ color: "#000000", fontSize: "36px", fontWeight: "700" }}>
+              Bữa ăn
+            </Box>
+          </Grid>
+          <Grid size={4}>
+            <Header />
+          </Grid>
         </Grid>
-        <Grid size={4}>
-          <Header />
-        </Grid>
-      </Grid>
-      <Grid container alignItems="center" sx={{ marginTop: 2 }}>
-        <Grid size={7}>
-          <Typography sx={{ color: "#000000", fontSize: "24px", fontWeight: "700" }}>
-            Thực đơn
-          </Typography>
-        </Grid>
-        <Grid size={5}>
-          <Tabs
-            value={selectedTab}
-            onChange={handleTabChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            sx={{
-              borderBottom: "1px solid #e0e0e0",
-              "& .MuiTab-root": {
-                minWidth: "auto",
-                flex: 1,
-              },
-              "& .Mui-selected": {
-                borderBottom: "2px solid #1568B1",
-              },
-            }}
-          >
-            <Tab label="Tất cả" value="Tất cả" />
-            <Tab label="Bữa sáng" value="Bữa sáng" />
-            <Tab label="Bữa trưa" value="Bữa trưa" />
-            <Tab label="Vặt" value="Vặt" />
-          </Tabs>
-        </Grid>
-      </Grid>
-      {/* Render here */}
-      <Box sx={{ marginTop: "20px" }}>
-        {currentMeals.map((meal, index) => (
-          <Grid
-            container
-            key={index}
-            sx={{
-              marginBottom: 2,
-              padding: 2,
-              alignItems: "center",
-              backgroundColor: "white",
-              borderRadius: "10px",
-              boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <Grid size={1} display="flex" justifyContent="center">
-              <Box
-                sx={{
-                  width: 50,
-                  height: 50,
-                  backgroundColor: "#25ABE1",
-                  borderRadius: "10px",
-                }}
-              />
-            </Grid>
-            <Grid size={2}>
-              <Typography>
-                <Chip
-                  label={meal.catergory}
-                  sx={{ fontSize: "14px" }}
-                  color="primary"
-                />
-              </Typography>
-              <Box sx={{ fontSize: "24px", fontWeight: "700", color: "black" }}>
-                {meal.name}
-              </Box>
-            </Grid>
-            <Grid size={2} display="flex" alignItems="center">
-              {starIcon({})}
-              <Box
-                sx={{
-                  marginLeft: 1,
-                  fontSize: "24px",
-                  fontWeight: "700",
-                  color: "black",
-                }}
-              >
-                {meal.star}
-              </Box>
-            </Grid>
-            <Grid size={2} display="flex" alignItems="center">
-              {chartIcon({})}
-              <Box
-                sx={{
-                  marginLeft: 1,
-                  fontSize: "24px",
-                  fontWeight: "700",
-                  color: "black",
-                }}
-              >
-                {meal.order}
-              </Box>
-            </Grid>
-            <Grid size={2} display="flex" alignItems="center">
-              {likeIcon({})}
+        <Box
+          sx={{
+            backgroundColor: "white",
+            padding: "10px",
+            marginTop: "20px",
+            borderRadius: "20px",
+          }}
+        >
+          <Grid container alignItems="center" sx={{ marginTop: 2 }}>
+            <Grid size={7}>
               <Typography
-                sx={{
-                  marginLeft: 1,
-                  fontSize: "24px",
-                  fontWeight: "700",
-                  color: "black",
-                }}
+                sx={{ color: "#000000", fontSize: "24px", fontWeight: "700" }}
               >
-                {meal.like}%
+                Thực đơn
               </Typography>
             </Grid>
-            <Grid size={1} display="flex" justifyContent="flex-end">
-              {threeDotsIcon({})}
+            <Grid size={5}>
+              <Tabs
+                value={selectedTab}
+                onChange={handleTabChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="fullWidth"
+                sx={{
+                  borderBottom: "1px solid #e0e0e0",
+                  "& .MuiTab-root": {
+                    minWidth: "auto",
+                    flex: 1,
+                  },
+                  "& .Mui-selected": {
+                    borderBottom: "2px solid #1568B1",
+                  },
+                }}
+              >
+                <Tab label="Tất cả" value="Tất cả" />
+                <Tab label="Bữa sáng" value="Bữa sáng" />
+                <Tab label="Bữa trưa" value="Bữa trưa" />
+                <Tab label="Vặt" value="Vặt" />
+              </Tabs>
             </Grid>
           </Grid>
-        ))}
-      </Box>
-      <Box display="flex" justifyContent="center" sx={{ marginTop: 2 }}>
-        <Pagination
-          count={Math.ceil(MealData.length / mealsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-          color="primary"
-        />
+          {/* Render here */}
+          <Box sx={{ marginTop: "20px" }}>
+            {currentMeals.map((meal, index) => (
+              <Grid
+                container
+                key={index}
+                sx={{
+                  marginBottom: 2,
+                  padding: 2,
+                  alignItems: "center",
+                }}
+              >
+                <Grid size={1} display="flex" justifyContent="center">
+                  <Box
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      backgroundColor: "#25ABE1",
+                      borderRadius: "10px",
+                    }}
+                  />
+                </Grid>
+                <Grid size={2}>
+                  <Typography>
+                    <Chip
+                      label={meal.catergory}
+                      sx={{ fontSize: "14px" }}
+                      color="primary"
+                    />
+                  </Typography>
+                  <Box
+                    sx={{ fontSize: "24px", fontWeight: "700", color: "black" }}
+                  >
+                    {meal.name}
+                  </Box>
+                </Grid>
+                <Grid size={2} display="flex" alignItems="center">
+                  {starIcon({})}
+                  <Box
+                    sx={{
+                      marginLeft: 1,
+                      fontSize: "24px",
+                      fontWeight: "700",
+                      color: "black",
+                    }}
+                  >
+                    {meal.star}
+                  </Box>
+                </Grid>
+                <Grid size={2} display="flex" alignItems="center">
+                  {chartIcon({})}
+                  <Box
+                    sx={{
+                      marginLeft: 1,
+                      fontSize: "24px",
+                      fontWeight: "700",
+                      color: "black",
+                    }}
+                  >
+                    {meal.order}
+                  </Box>
+                </Grid>
+                <Grid size={2} display="flex" alignItems="center">
+                  {likeIcon({})}
+                  <Typography
+                    sx={{
+                      marginLeft: 1,
+                      fontSize: "24px",
+                      fontWeight: "700",
+                      color: "black",
+                    }}
+                  >
+                    {meal.like}%
+                  </Typography>
+                </Grid>
+                <Grid size={1} display="flex" justifyContent="flex-end">
+                  {threeDotsIcon({})}
+                </Grid>
+              </Grid>
+            ))}
+          </Box>
+          <Box display="flex" justifyContent="right" sx={{ marginTop: 2 }}>
+            <Pagination
+              count={Math.ceil(MealData.length / mealsPerPage)}
+              page={currentPage}
+              onChange={handlePageChange}
+              color="primary"
+            />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
