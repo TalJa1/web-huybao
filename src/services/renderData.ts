@@ -358,15 +358,15 @@ export const MealData = generateMeals(15);
 
 export const UserRightData = [
   {
-    label: "Karen Hope moved task “User Research“ from On Progress to Done",
+    label: 'Karen Hope moved task "User Research" from On Progress to Done',
     date: "2 March 2021, 13:45 PM",
   },
   {
-    label: "Samantha William add new 4 attached files on task “Photo’s Assets“",
+    label: 'Samantha William add new 4 attached files on task "Photo’s Assets"',
     date: "3 March 2021, 13:45 PM",
   },
   {
-    label: "Tony Soap invite you in task “Wireframing“ and “Hi-fidelity“",
+    label: 'Tony Soap invite you in task "Wireframing" and "Hi-fidelity"',
     date: "4 March 2021, 13:45 PM",
   },
   {

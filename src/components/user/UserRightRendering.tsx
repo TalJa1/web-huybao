@@ -35,8 +35,8 @@ const Main: React.FC = () => {
           const restOfLabel = parts.slice(2).join(" ");
           const labelWithColor = restOfLabel.replace(
             /"(.*?)"/g,
-            (match) =>
-              `<span style="color: ${getRandomColor()}">${match}</span>`
+            (match, p1) =>
+              `<span style="color: ${getRandomColor()}">"${p1}"</span>`
           );
 
           return (
