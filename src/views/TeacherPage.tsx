@@ -176,6 +176,7 @@ const Main: React.FC = () => {
               borderRadius: "20px",
               paddingY: 2,
               position: "relative",
+              cursor: "pointer",
             }}
             key={teacher.name}
             onClick={() => handleTeacherClick(teacher)}
