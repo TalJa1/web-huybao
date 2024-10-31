@@ -45,37 +45,52 @@ const RenderRightComponent: React.FC<{
     return (
       <Box
         sx={{
+          display: "flex",
           backgroundColor: "white",
-          padding: "20px",
           borderRadius: "20px",
           marginBottom: "20px",
         }}
       >
         <Box
           sx={{
-            color: "#000000",
-            fontSize: "24px",
-            fontWeight: "700",
-            marginBottom: "10px",
+            backgroundColor: "#1568B1",
+            width: "6%",
+            borderTopLeftRadius: "20px",
+            borderBottomLeftRadius: "20px",
+          }}
+        />
+        <Box
+          sx={{
+            padding: "20px",
+            width: "90%",
           }}
         >
-          {subject}
-        </Box>
-        <Box sx={{ color: "#000000", fontSize: "18px", marginBottom: "10px" }}>
-          Lớp: 11A3
-        </Box>
-        <Box
-          sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
-        >
-          {calendarIcon({ width: 24, height: 24, color: "#000000" })}
-          <Box sx={{ marginLeft: "10px", color: "#000000", fontSize: "16px" }}>
-            {getTodayDate()}
+          <Box
+            sx={{
+              color: "#000000",
+              fontSize: "24px",
+              fontWeight: "700",
+              marginBottom: "10px",
+            }}
+          >
+            {subject}
           </Box>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          {clockIcon({ width: 24, height: 24, color: "#000000" })}
-          <Box sx={{ marginLeft: "10px", color: "#000000", fontSize: "16px" }}>
-            {startTime} - {endTime}
+          <Box sx={{ color: "#000000", fontSize: "18px", marginBottom: "10px" }}>
+            Lớp: 11A3
+          </Box>
+          <Box
+            sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}
+          >
+            {calendarIcon({ width: 24, height: 24, color: "#000000" })}
+            <Box sx={{ marginLeft: "10px", color: "#000000", fontSize: "16px" }}>
+              {getTodayDate()}
+            </Box>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            {clockIcon({ width: 24, height: 24, color: "#000000" })}
+            <Box sx={{ marginLeft: "10px", color: "#000000", fontSize: "16px" }}>
+              {startTime} - {endTime}
+            </Box>
           </Box>
         </Box>
       </Box>
