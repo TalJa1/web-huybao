@@ -65,9 +65,9 @@ const Main: React.FC = () => {
     indexOfLastTeacher
   );
   
-  const handleTeacherClick = (teacher: { name: string; subject: string }) => {
+  const handleTeacherClick = (teacher: { name: string; subject: string, img: any }) => {
     navigate(`/teachers/${teacher.name}`, {
-      state: { name: teacher.name, subject: teacher.subject },
+      state: { name: teacher.name, subject: teacher.subject, img: teacher.img },
     });
   };
 
