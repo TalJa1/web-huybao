@@ -164,7 +164,10 @@ const Main: React.FC = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid size={{ md: 4, xs: 12 }}></Grid>
+          <Grid container columnSpacing={2} rowSpacing={2}>
+            <Grid size={{ md: 6, xs: 12 }}></Grid>
+            <Grid size={{ md: 6, xs: 12 }}></Grid>
+          </Grid>
         </Grid>
       </Grid>
       <Grid

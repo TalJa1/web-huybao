@@ -374,3 +374,49 @@ export const UserRightData = [
     date: "5 March 2021, 13:45 PM",
   },
 ];
+
+export const UserContactData = [
+  {
+    name: "Nguyễn Thị Huyền",
+    class: "11a1",
+  },
+  {
+    name: "Nguyễn Văn An",
+    class: "11a1",
+  },
+  {
+    name: "Phan Thị Uyên",
+    class: "11a1",
+  },
+  {
+    name: "Vũ Ngọc Hạnh",
+    class: "11a1",
+  },
+  {
+    name: "Nguyễn Minh Châu",
+    class: "11a1",
+  },
+  {
+    name: "Lê Thị Giang",
+    class: "11a1",
+  },
+];
+
+export const UserMessageData = [
+  {
+    name: "Nguyễn Thị Huyền",
+    message: "Chào cô!",
+  },
+  {
+    name: "Nguyễn Thị Huyền",
+    message: "Em muốn hỏi về bài tập toán hôm qua.",
+  },
+  {
+    name: "Nguyễn Thị Huyền",
+    message: "Cô có thể giải thích lại phần lý thuyết không ạ?",
+  },
+  {
+    name: "Nguyễn Thị Huyền",
+    message: "Em cảm ơn cô đã giúp đỡ em trong bài kiểm tra vừa rồi.",
+  },
+];
