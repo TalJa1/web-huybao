@@ -1,19 +1,24 @@
-import { Box } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
 import { bellIcon, settingIcon } from "../../assets/iconSVG";
 import MealRightRendering from "../../components/meal/MealRightRendering";
+import { useLocation } from "react-router";
+import { MealDataProps } from "../../services/typeProps";
 
 const MealDetail = () => {
+  const location = useLocation();
+  const { meal } = location.state as { meal: any };
+
   return (
     <TopLayout>
-      <Main />
+      <Main meal={meal} />
     </TopLayout>
   );
 };
 
-const Main: React.FC = () => {
+const Main: React.FC<{ meal: MealDataProps }> = ({ meal }) => {
   return (
     <Box sx={{ padding: "20px" }}>
       <Grid container>
@@ -27,7 +32,63 @@ const Main: React.FC = () => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid size={{ md: 9, xs: 12 }}></Grid>
+        <Grid size={{ md: 9, xs: 12 }}>
+          <Box
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "20px",
+              padding: "10px",
+              marginTop: "50px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "#25ABE1",
+                width: "300px",
+                height: "200px",
+                borderRadius: "10px",
+                marginRight: "20px",
+              }}
+            />
+            <Box sx={{ flex: 1 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                <Chip label={meal.catergory} color="primary" />
+                <Typography variant="body1">Phí sản xuất</Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  {meal.name}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", color: "#000000" }}
+                >
+                  đ28.340
+                </Typography>
+              </Box>
+              <Typography variant="body2" sx={{ color: "#818181" }}>
+                Đây là mô tả giả cho món ăn này. Món ăn này rất ngon và bổ
+                dưỡng, phù hợp cho mọi lứa tuổi.
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
         <Grid size={{ md: 3, xs: 12 }}>
           <MealRightRendering />
         </Grid>
