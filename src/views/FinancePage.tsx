@@ -150,6 +150,11 @@ const Main: React.FC = () => {
   const indexOfFirstTrade = indexOfLastTrade - tradesPerPage;
   const currentTrades = TradeData.slice(indexOfFirstTrade, indexOfLastTrade);
 
+  const formatAmount = (amount: string) => {
+    const number = parseInt(amount.replace(/[^\d]/g, ""), 10);
+    return new Intl.NumberFormat("vi-VN").format(number);
+  };
+
   return (
     <Box sx={{ padding: "20px" }}>
       <Grid container>
@@ -371,7 +376,7 @@ const Main: React.FC = () => {
         <Line data={data} options={options} />
       </Box>
       <Box sx={{ marginY: 3 }}>
-        <Grid container columnSpacing={2}>
+        <Grid container columnSpacing={2} rowSpacing={2}>
           <Grid size={{ md: 6, xs: 12 }}>
             <Box
               sx={{
@@ -498,7 +503,16 @@ const Main: React.FC = () => {
                       </Grid>
 
                       <Grid size={3}>
-                        <Typography>{trade.amount}</Typography>
+                        <Typography
+                          sx={
+                            trade.isUp === true
+                              ? { color: "#27B24A" }
+                              : { color: "#F72B2B" }
+                          }
+                        >
+                          {trade.isUp ? "+" : "-"}
+                          {formatAmount(trade.amount)}
+                        </Typography>
                       </Grid>
                       <Grid size={2}>
                         <Typography>{trade.left}</Typography>

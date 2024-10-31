@@ -288,7 +288,7 @@ const generateTradeData = (numEntries: number) => {
   for (let i = 0; i < numEntries; i++) {
     tradeData.push({
       isUp: Math.random() > 0.5,
-      studentID: `#${uuidv4().slice(0, 8)}`,
+      studentID: `${uuidv4().slice(0, 8)}`,
       date: `10/${String(i + 1).padStart(2, "0")}/2024`,
       amount: `đ ${Math.floor(Math.random() * 5000000) + 1000000}`,
       left: `đ ${Math.floor(Math.random() * 1000000000) + 100000000}`,
