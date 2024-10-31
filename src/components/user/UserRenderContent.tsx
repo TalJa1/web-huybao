@@ -1,6 +1,7 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, InputAdornment, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { UserContactData, UserMessageData } from "../../services/renderData";
+import SearchIcon from "@mui/icons-material/Search";
 import Grid from "@mui/material/Grid2";
 
 const UserRenderContent: React.FC<{
@@ -56,6 +57,41 @@ const UserRenderContent: React.FC<{
           </Button>
         </Grid>
       </Grid>
+      <Box sx={{ marginY: "20px" }}>
+        <TextField
+          variant="outlined"
+          placeholder="Tìm kiếm"
+          sx={{
+            backgroundColor: "white",
+            borderRadius: "30px",
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="primary" />
+              </InputAdornment>
+            ),
+            style: {
+              backgroundColor: "white",
+              borderRadius: "200px",
+            },
+          }}
+          fullWidth
+        />
+      </Box>
+      <Box>
+        <Button
+        fullWidth
+          sx={{
+            backgroundColor: "#000000",
+            color: "white",
+            paddingY: "10px",
+            borderRadius: "50px",
+          }}
+        >
+          Xem thêm
+        </Button>
+      </Box>
     </Box>
   );
 };
