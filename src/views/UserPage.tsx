@@ -58,7 +58,14 @@ const Main: React.FC = () => {
       </Grid>
       <Grid
         size={{ md: 3, xs: 12 }}
-        sx={{ backgroundColor: "white", paddingY: "20px" }}
+        sx={{
+          backgroundColor: "white",
+          paddingY: "20px",
+          display: "flex",
+          flexDirection: "column",
+          height: "100vh",
+          overflow: "hidden",
+        }}
       >
         <UserRightRendering />
       </Grid>
