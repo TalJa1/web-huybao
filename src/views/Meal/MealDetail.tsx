@@ -2,7 +2,13 @@ import { Box, Chip, Typography } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
-import { bellIcon, settingIcon } from "../../assets/iconSVG";
+import {
+  bellIcon,
+  chartIcon,
+  likeIcon,
+  settingIcon,
+  starIcon,
+} from "../../assets/iconSVG";
 import MealRightRendering from "../../components/meal/MealRightRendering";
 import { useLocation } from "react-router";
 import { MealDataProps } from "../../services/typeProps";
@@ -32,13 +38,19 @@ const Main: React.FC<{ meal: MealDataProps }> = ({ meal }) => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid size={{ md: 9, xs: 12 }}>
+        <Grid
+          size={{ md: 9, xs: 12 }}
+          sx={{
+            backgroundColor: "white",
+            borderRadius: "20px",
+            padding: "10px",
+            marginTop: "50px",
+          }}
+        >
           <Box
             sx={{
               backgroundColor: "white",
               borderRadius: "20px",
-              padding: "10px",
-              marginTop: "50px",
               display: "flex",
               alignItems: "center",
             }}
@@ -87,7 +99,76 @@ const Main: React.FC<{ meal: MealDataProps }> = ({ meal }) => {
                 dưỡng, phù hợp cho mọi lứa tuổi.
               </Typography>
             </Box>
+            {/* render here */}
           </Box>
+          <Grid container sx={{marginTop: 2}}>
+            <Grid size={4} display="flex" alignItems="center">
+              {starIcon({})}
+              <Box
+                sx={{
+                  marginLeft: 1,
+                  fontSize: "24px",
+                  fontWeight: "700",
+                  color: "black",
+                }}
+              >
+                <Box>{meal.star}</Box>
+                <Box
+                  sx={{
+                    color: "#818181",
+                    fontSize: "18px",
+                    fontWeight: "400",
+                  }}
+                >
+                  đánh giá
+                </Box>
+              </Box>
+            </Grid>
+            <Grid size={4} display="flex" alignItems="center">
+              {chartIcon({})}
+              <Box
+                sx={{
+                  marginLeft: 1,
+                  fontSize: "24px",
+                  fontWeight: "700",
+                  color: "black",
+                }}
+              >
+                <Box>{meal.order}</Box>
+                <Box
+                  sx={{
+                    color: "#818181",
+                    fontSize: "18px",
+                    fontWeight: "400",
+                  }}
+                >
+                  lượt đặt
+                </Box>
+              </Box>
+            </Grid>
+            <Grid size={4} display="flex" alignItems="center">
+              {likeIcon({})}
+              <Typography
+                sx={{
+                  marginLeft: 1,
+                  fontSize: "24px",
+                  fontWeight: "700",
+                  color: "black",
+                }}
+              >
+                <Box> {meal.like}%</Box>
+                <Box
+                  sx={{
+                    color: "#818181",
+                    fontSize: "18px",
+                    fontWeight: "400",
+                  }}
+                >
+                  ưa chuộng
+                </Box>
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid size={{ md: 3, xs: 12 }}>
           <MealRightRendering />
