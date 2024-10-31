@@ -199,7 +199,7 @@ const Main: React.FC = () => {
           paddingY: "20px",
           display: "flex",
           flexDirection: "column",
-          height: "100vh",
+          minHeight: "100vh",
           overflow: "hidden",
         }}
       >

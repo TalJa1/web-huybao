@@ -1,8 +1,9 @@
-import { Box, Button, InputAdornment, TextField } from "@mui/material";
+import { Box, Button, InputAdornment, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { UserContactData, UserMessageData } from "../../services/renderData";
+import { StudentAvatar, UserContactData, UserMessageData } from "../../services/renderData";
 import SearchIcon from "@mui/icons-material/Search";
 import Grid from "@mui/material/Grid2";
+import { sendIcon } from "../../assets/iconSVG";
 
 const UserRenderContent: React.FC<{
   label: string;
@@ -80,8 +81,38 @@ const UserRenderContent: React.FC<{
         />
       </Box>
       <Box>
+        {data === 0 && renderData.map((student, index) => (
+          <Box
+            key={index}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "10px",
+              padding: "10px",
+              borderRadius: "10px",
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <img
+                src={StudentAvatar[index % StudentAvatar.length]}
+                alt={student.name}
+                style={{ width: "50px", height: "50px", borderRadius: "50%", marginRight: "10px" }}
+              />
+              <Box>
+                <Typography sx={{ fontWeight: "bold" }}>{student.name}</Typography>
+                <Typography sx={{ color: "#818181" }}>{student.class}</Typography>
+              </Box>
+            </Box>
+            <Box>
+              {sendIcon({ width: 24, height: 24, color: "#1568B1" })}
+            </Box>
+          </Box>
+        ))}
+      </Box>
+      <Box>
         <Button
-        fullWidth
+          fullWidth
           sx={{
             backgroundColor: "#000000",
             color: "white",
