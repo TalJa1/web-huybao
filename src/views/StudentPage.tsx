@@ -22,6 +22,7 @@ import { StudentList } from "../services/renderData";
 import Grid from "@mui/material/Grid2";
 import SearchIcon from "@mui/icons-material/Search";
 import { mailIcon, phoneIcon, threeDotsIcon } from "../assets/iconSVG";
+import { useNavigate } from "react-router";
 
 const StudentPage = () => {
   return (
@@ -36,6 +37,7 @@ const Main: React.FC = () => {
   const [selectedClass, setSelectedClass] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const studentsPerPage = 10;
+  const navigate = useNavigate();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -51,6 +53,10 @@ const Main: React.FC = () => {
     value: number
   ) => {
     setCurrentPage(value);
+  };
+
+  const handleRowClick = (student: any) => {
+    navigate(`/students/${student.name}`, { state: { student } });
   };
 
   const students = StudentList; // Add this line to define students
@@ -209,7 +215,11 @@ const Main: React.FC = () => {
             </TableHead>
             <TableBody>
               {currentStudents.map((student) => (
-                <TableRow key={student.id}>
+                <TableRow
+                  key={student.id}
+                  onClick={() => handleRowClick(student)}
+                  style={{ cursor: "pointer" }}
+                >
                   <TableCell
                     sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
                   >
