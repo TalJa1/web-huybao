@@ -6,11 +6,11 @@ import { TextField, InputAdornment, Box } from "@mui/material";
 import UserRightRendering from "../components/user/UserRightRendering";
 import {
   threeDotsIcon,
-  locationIcon,
   phone1Icon,
   mail1Icon,
   location1Icon,
 } from "../assets/iconSVG";
+import UserRenderContent from "../components/user/UserRenderContent";
 
 const UserPage = () => {
   return (
@@ -164,9 +164,31 @@ const Main: React.FC = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid container columnSpacing={2} rowSpacing={2}>
-            <Grid size={{ md: 6, xs: 12 }}></Grid>
-            <Grid size={{ md: 6, xs: 12 }}></Grid>
+        </Grid>
+        <Grid container columnSpacing={2} rowSpacing={2} sx={{ marginTop: 2 }}>
+          <Grid
+            size={{ md: 6, xs: 12 }}
+            sx={{
+              backgroundColor: "white",
+              padding: "10px",
+              borderRadius: "20px",
+            }}
+          >
+            <UserRenderContent data={0} des="741 liên lạc" label="Liên lạc" />
+          </Grid>
+          <Grid
+            size={{ md: 6, xs: 12 }}
+            sx={{
+              backgroundColor: "white",
+              padding: "10px",
+              borderRadius: "20px",
+            }}
+          >
+            <UserRenderContent
+              data={1}
+              des="459 tin nhắn chưa đọc"
+              label="Tin nhắn"
+            />
           </Grid>
         </Grid>
       </Grid>
