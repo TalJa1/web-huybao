@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
@@ -47,6 +47,34 @@ const Main: React.FC = () => {
           }
           label="Thông tin người bảo hộ"
         />
+      </Box>
+      {/* render here */}
+      <Box
+        sx={{ display: "flex", justifyContent: "flex-end", marginTop: "20px" }}
+      >
+        <Button
+          variant="outlined"
+          sx={{
+            borderColor: "#1568B1",
+            color: "#1568B1",
+            marginRight: "10px",
+            borderRadius: "40px",
+            paddingY: "10px",
+          }}
+        >
+          Lưu bản nháp
+        </Button>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#1568B1",
+            color: "white",
+            paddingY: "10px",
+            borderRadius: "40px",
+          }}
+        >
+          Cập nhật
+        </Button>
       </Box>
     </Box>
   );
