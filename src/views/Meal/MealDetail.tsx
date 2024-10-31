@@ -25,6 +25,32 @@ const MealDetail = () => {
 };
 
 const Main: React.FC<{ meal: MealDataProps }> = ({ meal }) => {
+  const ingredients = [
+    "Tôm", // Shrimp
+    "Hành lá", // Scallions
+    "Ớt", // Chili
+    "Tỏi", // Garlic
+    "Hành tím", // Shallot
+    "Gừng", // Ginger
+    "Chanh", // Lime
+    "Nước mắm", // Fish sauce
+    "Dừa tươi", // Fresh coconut
+    "Trứng gà", // Egg
+  ];
+
+  const nutrition = [
+    "Calories: 150",
+    "Protein: 8g",
+    "Fat: 4g",
+    "Carbohydrates: 20g",
+    "Fiber: 1g",
+    "Sodium: 300mg",
+    "Sugars: 5g",
+    "Vitamin C: 10mg",
+    "Vitamin A: 500 IU",
+    "Iron: 2mg",
+  ];
+
   return (
     <Box sx={{ padding: "20px" }}>
       <Grid container>
@@ -101,7 +127,7 @@ const Main: React.FC<{ meal: MealDataProps }> = ({ meal }) => {
             </Box>
             {/* render here */}
           </Box>
-          <Grid container sx={{marginTop: 2}}>
+          <Grid container sx={{ marginTop: 2 }}>
             <Grid size={4} display="flex" alignItems="center">
               {starIcon({})}
               <Box
@@ -167,6 +193,32 @@ const Main: React.FC<{ meal: MealDataProps }> = ({ meal }) => {
                   ưa chuộng
                 </Box>
               </Typography>
+            </Grid>
+          </Grid>
+          <Grid container sx={{ marginTop: 3 }}>
+            <Grid size={6}>
+              <Box sx={{ color: "black", fontSize: "24px", fontWeight: "700" }}>
+                Nguyên liệu
+              </Box>
+              <ul>
+                {ingredients.map((ingredient, index) => (
+                  <li style={{ color: "#818181" }} key={index}>
+                    {ingredient}
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+            <Grid size={6}>
+              <Box sx={{ color: "black", fontSize: "24px", fontWeight: "700" }}>
+                Dinh dưỡng
+              </Box>
+              <ul>
+                {nutrition.map((nutrient, index) => (
+                  <li style={{ color: "#818181" }} key={index}>
+                    {nutrient}
+                  </li>
+                ))}
+              </ul>
             </Grid>
           </Grid>
         </Grid>
