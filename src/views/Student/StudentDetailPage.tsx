@@ -1,10 +1,16 @@
-import { Box } from "@mui/material";
-import React from "react";
+import { Box, Chip, Pagination } from "@mui/material";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
-import { bellIcon, settingIcon, threeDotsIcon } from "../../assets/iconSVG";
+import {
+  bellIcon,
+  downTraddeIcon,
+  settingIcon,
+  threeDotsIcon,
+  upTradeIcon,
+} from "../../assets/iconSVG";
 import { useLocation } from "react-router";
-import { Student } from "../../services/typeProps";
+import { Student, StudentDetailTradeProps } from "../../services/typeProps";
 import RenderRightComponent from "../../components/teacher&student/RenderRightComponent";
 
 const StudentDetailPage = () => {
@@ -18,6 +24,48 @@ const StudentDetailPage = () => {
 };
 
 const Main: React.FC<{ student: Student }> = ({ student }) => {
+  const studentInfo = [
+    { label: "Ngày sinh:", value: student.dob || "01/01/2000" },
+    { label: "Ngày nhập học:", value: "01/09/2015" },
+    { label: "Giới tính:", value: "Nam" },
+    { label: "Nhóm máu:", value: "O" },
+    { label: "Số điện thoại:", value: "0123456789" },
+    { label: "Địa chỉ:", value: "123 Main St" },
+    { label: "Nơi sinh:", value: student.hometown || "Hà Nội" },
+    {
+      label: "Họ tên người bảo hộ:",
+      value: student.parentName || "Nguyễn Văn A",
+    },
+    { label: "Quan hệ với học sinh:", value: "Bố" },
+    { label: "Số điện thoại:", value: "0987654321" },
+    { label: "Ghi chú đặc biệt:", value: "Không có" },
+  ];
+
+  const tradeData: StudentDetailTradeProps[] = Array.from(
+    { length: 15 },
+    (_, index) => ({
+      label: `Phí học nội trú tháng ${index + 1}`,
+      date: `2024-10-${String(index + 1).padStart(2, "0")}`,
+      amount: `${(Math.random() * 10000000).toFixed(0)}`,
+      isUp: Math.random() > 0.5,
+    })
+  );
+
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 4;
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
+  const paginatedData = tradeData.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
+
+  const formatCurrency = (amount: string) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Number(amount));
+  };
+
   return (
     <Box sx={{ padding: "20px" }}>
       <Grid container>
@@ -30,7 +78,12 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
           <Header />
         </Grid>
       </Grid>
-      <Grid container columnSpacing={2} sx={{ marginTop: "20px" }}>
+      <Grid
+        container
+        columnSpacing={2}
+        rowSpacing={2}
+        sx={{ marginTop: "20px" }}
+      >
         <Grid size={{ md: 8, xs: 12 }}>
           <Box
             sx={{
@@ -64,6 +117,15 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
                 sx={{
                   position: "absolute",
                   top: "20px",
+                  left: "200px",
+                }}
+              >
+                <Chip label={student.class} color="warning" />
+              </Box>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "20px",
                   right: "20px",
                 }}
               >
@@ -83,7 +145,109 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
               </Box>
             </Box>
             {/* render here */}
-            
+            <Box sx={{ paddingX: "20px", marginBottom: "20px" }}>
+              <Grid container>
+                <Grid size={{ md: 5, xs: 12 }}>
+                  <Box sx={{ color: "#EE7223", fontSize: "24px" }}>
+                    Thông tin
+                  </Box>
+                  <Box sx={{ marginTop: 2 }}>
+                    {studentInfo.map((info, index) => (
+                      <Grid size={12} key={index} sx={{ marginBottom: 2 }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              color: "black",
+                              fontSize: "18px",
+                              fontWeight: "700",
+                            }}
+                          >
+                            {info.label}
+                          </Box>
+                          <Box
+                            sx={{
+                              color: "#000000",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {info.value}
+                          </Box>
+                        </Box>
+                      </Grid>
+                    ))}
+                  </Box>
+                </Grid>
+                <Grid size={{ md: 7, xs: 12 }}>
+                  <Box>
+                    <Box sx={{ paddingX: "20px", marginBottom: "20px" }}>
+                      <Grid container spacing={2}>
+                        {paginatedData.map((trade, index) => (
+                          <Grid size={12} key={index}>
+                            <Box
+                              sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <Box
+                                sx={{ display: "flex", alignItems: "center" }}
+                              >
+                                {trade.isUp
+                                  ? upTradeIcon({})
+                                  : downTraddeIcon({})}
+                                <Box sx={{ marginLeft: "10px" }}>
+                                  <Box
+                                    sx={{
+                                      color: "#363B64",
+                                      fontSize: "18px",
+                                    }}
+                                  >
+                                    {trade.label}
+                                  </Box>
+                                  <Box
+                                    sx={{ color: "#A098AE", fontSize: "14px" }}
+                                  >
+                                    {trade.date}
+                                  </Box>
+                                </Box>
+                              </Box>
+                              <Box
+                                sx={
+                                  trade.isUp
+                                    ? { color: "#27B24A", fontSize: "18px" }
+                                    : { color: "#F72B2B", fontSize: "18px" }
+                                }
+                              >
+                                {trade.isUp ? "+" : "-"}
+                                {formatCurrency(trade.amount)}
+                              </Box>
+                            </Box>
+                          </Grid>
+                        ))}
+                      </Grid>
+                      <Box
+                        display="flex"
+                        justifyContent="flex-end"
+                        sx={{ marginTop: 2 }}
+                      >
+                        <Pagination
+                          color="primary"
+                          count={Math.ceil(tradeData.length / itemsPerPage)}
+                          page={page}
+                          onChange={handleChange}
+                        />
+                      </Box>
+                    </Box>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
         </Grid>
         <Grid size={{ md: 4, xs: 12 }}>

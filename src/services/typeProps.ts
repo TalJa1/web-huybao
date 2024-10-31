@@ -27,3 +27,10 @@ export interface MealDataProps {
   order: number; // max 2000
   like: number; //ex: 26%
 }
+
+export interface StudentDetailTradeProps {
+  label: string;
+  date: string;
+  amount: string;
+  isUp: boolean;
+}
