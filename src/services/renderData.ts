@@ -1,4 +1,4 @@
-import { Student } from "./typeProps";
+import { MealDataProps, Student } from "./typeProps";
 
 export const homeListStudent = [
   {
@@ -299,3 +299,60 @@ const generateTradeData = (numEntries: number) => {
 
 // Generate 20 more trade data entries
 export const TradeData = generateTradeData(20);
+
+
+const mealNames = [
+  "Phở",
+  "Bún chả",
+  "Bánh mì",
+  "Cơm tấm",
+  "Gỏi cuốn",
+  "Bánh xèo",
+  "Chả giò",
+  "Bánh cuốn",
+  "Bún bò Huế",
+  "Cao lầu",
+  "Mì Quảng",
+  "Nem rán",
+  "Bánh khọt",
+  "Bánh bèo",
+  "Bánh đúc",
+  "Bánh ít",
+  "Bánh tét",
+  "Bánh chưng",
+  "Bánh gai",
+  "Bánh giò",
+  "Bánh nậm",
+  "Bánh phu thê",
+  "Bánh tằm",
+  "Bánh tráng",
+  "Bánh trôi",
+];
+
+const categories = ["Bữa sáng", "Bữa trưa", "Vặt"];
+
+const generateMeals = (numMealsPerCategory: number): MealDataProps[] => {
+  const meals: MealDataProps[] = [];
+  let nameIndex = 0;
+
+  for (const category of categories) {
+    for (let i = 0; i < numMealsPerCategory; i++) {
+      if (nameIndex >= mealNames.length) nameIndex = 0;
+
+      meals.push({
+        name: mealNames[nameIndex],
+        catergory: category,
+        star: Math.floor(Math.random() * 5) + 1,
+        order: Math.floor(Math.random() * 2000) + 1,
+        like: Math.floor(Math.random() * 100) + 1,
+      });
+
+      nameIndex++;
+    }
+  }
+
+  return meals;
+};
+
+// Generate 15 meals for each category
+export const MealData = generateMeals(15);

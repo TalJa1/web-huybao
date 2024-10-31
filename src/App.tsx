@@ -6,6 +6,7 @@ import Home from "./views/Home";
 import StudentPage from "./views/StudentPage";
 import TeacherPage from "./views/TeacherPage";
 import FinancePage from "./views/FinancePage";
+import MealPage from "./views/MealPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/students" element={<StudentPage />} />
         <Route path="/teachers" element={<TeacherPage />} />
         <Route path="/finance" element={<FinancePage />} />
+        <Route path="/meals" element={<MealPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -19,3 +19,11 @@ export interface Student {
   hometown: string;
   class: string;
 }
+
+export interface MealDataProps {
+  name: string; // vietnamese food name
+  catergory: string; //Bữa sáng || Bữa trưa || Vặt
+  star: number; // 1-5
+  order: number; // max 2000
+  like: number; //ex: 26%
+}
