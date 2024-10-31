@@ -136,9 +136,10 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {!isMinimized && "Người dùng"}
           </MenuItem>
           <MenuItem
+            disabled
             component={<Link to="/messages" />}
             icon={messageIcon({ color: getIconColor("/messages") })}
-            onClick={() => handleMenuItemClick("/messages")}
+            onClick={() => {}}
             style={getMenuItemStyle("/messages")}
           >
             {!isMinimized && "Tin nhắn"}
