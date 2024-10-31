@@ -5,6 +5,7 @@ import TopLayout from "../../components/TopLayout";
 import { bellIcon, settingIcon } from "../../assets/iconSVG";
 import GroupAddFields from "../../components/teacher&student/GroupAddFields";
 import BoxInputTop from "../../components/student/BoxInputTop";
+import BoxInputBottom from "../../components/student/BoxInputBottom";
 
 const AddStudent = () => {
   return (
@@ -35,6 +36,16 @@ const Main: React.FC = () => {
             </Box>
           }
           label="Student Details"
+        />
+      </Box>
+      <Box sx={{ marginTop: "20px" }}>
+        <GroupAddFields
+          children={
+            <Box>
+              <BoxInputBottom />
+            </Box>
+          }
+          label="Thông tin người bảo hộ"
         />
       </Box>
     </Box>
