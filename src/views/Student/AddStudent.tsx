@@ -1,9 +1,10 @@
-import { Box } from "@mui/material";
+import { Box, Input } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
 import { bellIcon, settingIcon } from "../../assets/iconSVG";
 import GroupAddFields from "../../components/teacher&student/GroupAddFields";
+import InputComponent from "../../components/teacher&student/InputComponent";
 
 const AddStudent = () => {
   return (
@@ -27,7 +28,18 @@ const Main: React.FC = () => {
         </Grid>
       </Grid>
       <Box sx={{ marginTop: "20px" }}>
-        <GroupAddFields children={<></>} label="Student Details" />
+        <GroupAddFields
+          children={
+            <Box>
+              <InputComponent
+                label="Họ và tên"
+                isMultipleLine={false}
+                placeholder="asdasd"
+              />
+            </Box>
+          }
+          label="Student Details"
+        />
       </Box>
     </Box>
   );
