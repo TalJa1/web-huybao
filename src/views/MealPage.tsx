@@ -11,6 +11,7 @@ import {
   threeDotsIcon,
 } from "../assets/iconSVG";
 import { MealData } from "../services/renderData";
+import { useNavigate } from "react-router";
 
 const MealPage = () => {
   return (
@@ -24,6 +25,7 @@ const Main: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [selectedTab, setSelectedTab] = useState<string>("Tất cả");
   const mealsPerPage = 5;
+  const navigate = useNavigate();
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -45,6 +47,10 @@ const Main: React.FC = () => {
   const indexOfLastMeal = currentPage * mealsPerPage;
   const indexOfFirstMeal = indexOfLastMeal - mealsPerPage;
   const currentMeals = filteredMeals.slice(indexOfFirstMeal, indexOfLastMeal);
+
+  const handleMealClick = (meal: any) => {
+    navigate(`/meals/${meal.name}`, { state: { meal } });
+  };
 
   return (
     <Box sx={{ padding: "20px", overflowX: "auto" }}>
@@ -106,10 +112,12 @@ const Main: React.FC = () => {
               <Grid
                 container
                 key={index}
+                onClick={() => handleMealClick(meal)}
                 sx={{
                   marginBottom: 2,
                   padding: 2,
                   alignItems: "center",
+                  cursor: "pointer",
                 }}
               >
                 <Grid size={1} display="flex" justifyContent="center">
@@ -200,7 +208,7 @@ const Main: React.FC = () => {
             ))}
           </Box>
           <Box display="flex" justifyContent="right" sx={{ marginTop: 2 }}>
-          <Pagination
+            <Pagination
               count={Math.ceil(filteredMeals.length / mealsPerPage)}
               page={currentPage}
               onChange={handlePageChange}

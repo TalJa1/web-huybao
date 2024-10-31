@@ -10,6 +10,7 @@ import MealPage from "./views/MealPage";
 import TeacherDetail from "./views/Teacher/TeacherDetail";
 import StudentDetailPage from "./views/Student/StudentDetailPage";
 import UserPage from "./views/UserPage";
+import MealDetail from "./views/Meal/MealDetail";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/teachers/:name" element={<TeacherDetail />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/meals" element={<MealPage />} />
+        <Route path="/meals/:name" element={<MealDetail />} />
         <Route path="/users" element={<UserPage />} />
       </Routes>
     </BrowserRouter>
