@@ -3,7 +3,7 @@ import { Box, TextField, Typography } from "@mui/material";
 
 interface InputComponentProps {
   label: string;
-  isMultipleLine: boolean;
+  isMultipleLine?: boolean;
   placeholder: string;
 }
 

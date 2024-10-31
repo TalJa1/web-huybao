@@ -1,10 +1,10 @@
-import { Box, Input } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
 import { bellIcon, settingIcon } from "../../assets/iconSVG";
 import GroupAddFields from "../../components/teacher&student/GroupAddFields";
-import InputComponent from "../../components/teacher&student/InputComponent";
+import BoxInputTop from "../../components/student/BoxInputTop";
 
 const AddStudent = () => {
   return (
@@ -31,11 +31,7 @@ const Main: React.FC = () => {
         <GroupAddFields
           children={
             <Box>
-              <InputComponent
-                label="Họ và tên"
-                isMultipleLine={false}
-                placeholder="asdasd"
-              />
+              <BoxInputTop />
             </Box>
           }
           label="Student Details"
