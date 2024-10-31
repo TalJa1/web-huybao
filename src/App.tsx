@@ -12,6 +12,7 @@ import StudentDetailPage from "./views/Student/StudentDetailPage";
 import UserPage from "./views/UserPage";
 import MealDetail from "./views/Meal/MealDetail";
 import AddStudent from "./views/Student/AddStudent";
+import AddTeacher from "./views/Teacher/AddTeacher";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/addstudents" element={<AddStudent />} />
         <Route path="/students/:name" element={<StudentDetailPage />} />
         <Route path="/teachers" element={<TeacherPage />} />
+        <Route path="/addteachers" element={<AddTeacher />} />
         <Route path="/teachers/:name" element={<TeacherDetail />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/meals" element={<MealPage />} />

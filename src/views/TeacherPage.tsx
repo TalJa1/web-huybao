@@ -64,11 +64,19 @@ const Main: React.FC = () => {
     indexOfFirstTeacher,
     indexOfLastTeacher
   );
-  
-  const handleTeacherClick = (teacher: { name: string; subject: string, img: any }) => {
+
+  const handleTeacherClick = (teacher: {
+    name: string;
+    subject: string;
+    img: any;
+  }) => {
     navigate(`/teachers/${teacher.name}`, {
       state: { name: teacher.name, subject: teacher.subject, img: teacher.img },
     });
+  };
+
+  const handleAddTeacherClick = () => {
+    navigate("/addteachers");
   };
 
   return (
@@ -160,6 +168,7 @@ const Main: React.FC = () => {
             <Button
               variant="contained"
               color="primary"
+              onClick={handleAddTeacherClick}
               sx={{ borderRadius: "40px" }}
             >
               + Thêm giáo viên
