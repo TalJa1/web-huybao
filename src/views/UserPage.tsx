@@ -136,8 +136,7 @@ const Main: React.FC = () => {
                       alignItems={"center"}
                     >
                       <Box>
-                        <Box>Số điện thoại</Box>
-
+                        <Box sx={{ marginBottom: 2 }}>Số điện thoại</Box>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                           {phone1Icon({})} +12 345 6789 0
                         </Box>
@@ -154,7 +153,7 @@ const Main: React.FC = () => {
                       alignItems={"center"}
                     >
                       <Box>
-                        <Box>Email</Box>
+                        <Box sx={{ marginBottom: 2 }}>Email</Box>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                           {mail1Icon({})}Emain@gmail.com
                         </Box>
