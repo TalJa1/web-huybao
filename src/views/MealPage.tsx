@@ -159,7 +159,16 @@ const Main: React.FC = () => {
                       color: "black",
                     }}
                   >
-                    {meal.order}
+                    <Box>{meal.order}</Box>
+                    <Box
+                      sx={{
+                        color: "#818181",
+                        fontSize: "18px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      lượt đặt
+                    </Box>
                   </Box>
                 </Grid>
                 <Grid size={2} display="flex" alignItems="center">
@@ -172,7 +181,16 @@ const Main: React.FC = () => {
                       color: "black",
                     }}
                   >
-                    {meal.like}%
+                    <Box> {meal.like}%</Box>
+                    <Box
+                      sx={{
+                        color: "#818181",
+                        fontSize: "18px",
+                        fontWeight: "400",
+                      }}
+                    >
+                      ưa chuộng
+                    </Box>
                   </Typography>
                 </Grid>
                 <Grid size={1} display="flex" justifyContent="flex-end">
