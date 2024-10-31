@@ -1,8 +1,15 @@
 import Grid from "@mui/material/Grid2";
 import React from "react";
 import { bellIcon, settingIcon } from "../../assets/iconSVG";
-import { Box, Button } from "@mui/material";
-import { mealHomeList } from "../../services/renderData";
+import {
+  Box,
+  Button,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
+import { mealHomeList, UserRightData } from "../../services/renderData";
 
 const UserRightRendering = () => {
   return (
@@ -14,41 +21,52 @@ const UserRightRendering = () => {
 };
 
 const Main: React.FC = () => {
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   return (
     <Box sx={{ marginTop: 2 }}>
       <Box sx={{ color: "#363B64", fontSize: "24px", fontWeight: "700" }}>
-        Thực đơn gần đây
+        Lastest Activity
       </Box>
-      <Box>
-        {mealHomeList.map((meal, index) => {
+      <Stepper orientation="vertical" sx={{ marginTop: 2 }}>
+        {UserRightData.map((data, index) => {
+          const parts = data.label.split(" ");
+          const firstTwoWords = parts.slice(0, 2).join(" ");
+          const restOfLabel = parts.slice(2).join(" ");
+          const labelWithColor = restOfLabel.replace(
+            /"(.*?)"/g,
+            (match) =>
+              `<span style="color: ${getRandomColor()}">${match}</span>`
+          );
+
           return (
-            <Grid container key={index} sx={{ rowGap: 2, marginY: 2 }}>
-              <img alt="" src={meal.img} style={{ width: "100%" }} />
-              <Box
-                sx={{
-                  color: "#363B64",
-                  fontSize: "18px",
-                  fontWeight: "700",
-                }}
-              >
-                {meal.name}
-              </Box>
-            </Grid>
+            <Step key={index} active completed>
+              <StepLabel>
+                <Typography
+                  component="span"
+                  sx={{ fontWeight: 700, color: "black" }}
+                >
+                  {firstTwoWords}
+                </Typography>{" "}
+                <Typography
+                  component="span"
+                  dangerouslySetInnerHTML={{ __html: labelWithColor }}
+                />
+                <Typography sx={{ color: "#A098AE", fontSize: "14px" }}>
+                  {data.date}
+                </Typography>
+              </StepLabel>
+            </Step>
           );
         })}
-      </Box>
-      <Button
-        sx={{
-          marginY: 2,
-          backgroundColor: "black",
-          color: "white",
-          borderRadius: 10,
-          paddingY: 1.5,
-          width: "100%",
-        }}
-      >
-        Xem thêm
-      </Button>
+      </Stepper>
     </Box>
   );
 };
