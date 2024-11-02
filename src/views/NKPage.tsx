@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import TopLayout from "../components/TopLayout";
-import { Box, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+  Box,
+  MenuItem,
+  Paper,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import { clubs } from "../services/renderData";
 
 const NKPage = () => {
@@ -33,6 +44,18 @@ const Main: React.FC = () => {
       return updatedClubs;
     });
   };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "ĐÃ ĐẾN LỚP":
+        return "green";
+      case "VẮNG":
+        return "red";
+      default:
+        return "orange";
+    }
+  };
+
   return (
     <Box>
       {/* NK */}
@@ -68,6 +91,12 @@ const Main: React.FC = () => {
                               e.target.value as string
                             )
                           }
+                          sx={{
+                            color: getStatusColor(student.status),
+                            "& .MuiSelect-icon": {
+                              color: getStatusColor(student.status),
+                            },
+                          }}
                         >
                           {statusOptions.map((option) => (
                             <MenuItem key={option} value={option}>
