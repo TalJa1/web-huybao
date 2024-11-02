@@ -188,9 +188,11 @@ const generateStudents = (
   const students: Student[] = [];
   let nameIndex = 0;
   let parentIndex = 0;
+  let studentIdCounter = 1;
 
   for (let classIndex = 1; classIndex <= numClasses; classIndex++) {
     const className = `11a${classIndex}`;
+
     for (
       let studentIndex = 1;
       studentIndex <= studentsPerClass;
@@ -198,10 +200,11 @@ const generateStudents = (
     ) {
       if (nameIndex >= additionalNames.length) nameIndex = 0;
       if (parentIndex >= parentNames.length) parentIndex = 0;
+      const studentId = `HOPE${String(studentIdCounter).padStart(5, "0")}`;
 
       students.push({
         name: additionalNames[nameIndex],
-        id: `#${uuidv4().slice(0, 8)}`,
+        id: studentId,
         dob: `2008-${Math.floor(Math.random() * 12) + 1}-${
           Math.floor(Math.random() * 28) + 1
         }`,
@@ -212,6 +215,7 @@ const generateStudents = (
 
       nameIndex++;
       parentIndex++;
+      studentIdCounter++;
     }
   }
 
@@ -312,7 +316,7 @@ const mealNames = [
   "Bánh trôi",
 ];
 
-const categories = ["Bữa sáng", "Bữa trưa","Bữa tối" ,"Vặt"];
+const categories = ["Bữa sáng", "Bữa trưa", "Bữa tối", "Vặt"];
 
 const generateMeals = (numMealsPerCategory: number): MealDataProps[] => {
   const meals: MealDataProps[] = [];

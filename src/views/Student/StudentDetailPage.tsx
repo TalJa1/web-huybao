@@ -336,6 +336,10 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
                 </Grid>
               </Grid>
             </Box>
+            {/* NK */}
+            <Box sx={{ marginTop: 2, padding: "20px" }}>
+              
+            </Box>
           </Box>
         </Grid>
         <Grid size={{ md: 4, xs: 12 }}>
