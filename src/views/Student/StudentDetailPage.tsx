@@ -1,4 +1,15 @@
-import { Box, Chip, Pagination } from "@mui/material";
+import {
+  Box,
+  Chip,
+  Pagination,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import TopLayout from "../../components/TopLayout";
@@ -12,6 +23,7 @@ import {
 import { useLocation } from "react-router";
 import { Student, StudentDetailTradeProps } from "../../services/typeProps";
 import RenderRightComponent from "../../components/teacher&student/RenderRightComponent";
+import { weeklySchedule } from "../../services/renderData";
 
 const StudentDetailPage = () => {
   const location = useLocation();
@@ -63,7 +75,20 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
   );
 
   const formatCurrency = (amount: string) => {
-    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(Number(amount));
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(Number(amount));
+  };
+
+  const dayMapping: { [key: string]: string } = {
+    monday: "Thứ hai",
+    tuesday: "Thứ ba",
+    wednesday: "Thứ tư",
+    thursday: "Thứ năm",
+    friday: "Thứ sáu",
+    saturday: "Thứ bảy",
+    sunday: "Chủ nhật",
   };
 
   return (
@@ -245,6 +270,69 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
                       </Box>
                     </Box>
                   </Box>
+                </Grid>
+              </Grid>
+            </Box>
+            <Box sx={{ marginTop: 2, padding: "20px" }}>
+              <Grid container size={12}>
+                <Grid size={12}>
+                  <Box
+                    sx={{ color: "#EE7223", fontSize: "24px", marginBottom: 2 }}
+                  >
+                    Thời khóa biểu nội trú
+                  </Box>
+                  <TableContainer component={Paper}>
+                    <Table>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Ngày
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Thức dậy
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Kết thúc học
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Hoạt động ngoại khóa
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Chăm sóc cá nhân và ăn tối
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Học tập hoặc tư vấn
+                          </TableCell>
+                          <TableCell sx={{ fontWeight: "bold" }}>
+                            Hoạt động nhóm và ngủ
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {Object.entries(weeklySchedule).map(
+                          ([day, schedule]) => (
+                            <TableRow key={day}>
+                              <TableCell>{dayMapping[day]}</TableCell>
+                              <TableCell>{schedule.wakeUp}</TableCell>
+                              <TableCell>
+                                {schedule.schoolEnd || "N/A"}
+                              </TableCell>
+                              <TableCell>{schedule.extracurricular}</TableCell>
+                              <TableCell>
+                                {schedule.personalCareAndDinner}
+                              </TableCell>
+                              <TableCell>
+                                {schedule.studyOrCounseling}
+                              </TableCell>
+                              <TableCell>
+                                {schedule.teamActivityAndSleep}
+                              </TableCell>
+                            </TableRow>
+                          )
+                        )}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
                 </Grid>
               </Grid>
             </Box>

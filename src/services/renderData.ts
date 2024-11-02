@@ -404,3 +404,62 @@ export const UserMessageData = [
     message: "Em cảm ơn cô đã giúp đỡ em trong bài kiểm tra vừa rồi.",
   },
 ];
+
+export const weeklySchedule = {
+  monday: {
+    wakeUp: "6h30",
+    schoolEnd: "16h30",
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+  tuesday: {
+    wakeUp: "6h30",
+    schoolEnd: "16h30",
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+  wednesday: {
+    wakeUp: "6h30",
+    schoolEnd: "16h30",
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+  thursday: {
+    wakeUp: "6h30",
+    schoolEnd: "16h30",
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+  friday: {
+    wakeUp: "6h30",
+    schoolEnd: "16h30",
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+  saturday: {
+    wakeUp: "8h",
+    schoolEnd: null,
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+  sunday: {
+    wakeUp: "8h",
+    schoolEnd: null,
+    extracurricular: "16h30 - 18h",
+    personalCareAndDinner: "18h15 - 19h15",
+    studyOrCounseling: "19h15 - 21h",
+    teamActivityAndSleep: "21h - 21h30",
+  },
+};
