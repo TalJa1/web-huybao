@@ -13,6 +13,7 @@ import UserPage from "./views/UserPage";
 import MealDetail from "./views/Meal/MealDetail";
 import AddStudent from "./views/Student/AddStudent";
 import AddTeacher from "./views/Teacher/AddTeacher";
+import NKPage from "./views/NKPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/meals" element={<MealPage />} />
         <Route path="/meals/:name" element={<MealDetail />} />
         <Route path="/users" element={<UserPage />} />
+        <Route path="/nk" element={<NKPage />} />
       </Routes>
     </BrowserRouter>
   );

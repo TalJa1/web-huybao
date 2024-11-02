@@ -12,6 +12,7 @@ import {
   teacherIcon,
   userIcon,
 } from "../assets/iconSVG";
+import CampaignIcon from '@mui/icons-material/Campaign';
 
 const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
@@ -126,6 +127,14 @@ const TopLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             style={getMenuItemStyle("/meals")}
           >
             {!isMinimized && "Bữa ăn"}
+          </MenuItem>
+          <MenuItem
+            component={<Link to="/nk" />}
+            icon={<CampaignIcon sx={{ color: getIconColor("/nk") }} />}
+            onClick={() => handleMenuItemClick("/nk")}
+            style={getMenuItemStyle("/nk")}
+          >
+            {!isMinimized && "Ngoại khóa"}
           </MenuItem>
           <MenuItem
             component={<Link to="/users" />}

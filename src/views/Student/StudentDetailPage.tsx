@@ -1,8 +1,10 @@
 import {
   Box,
   Chip,
+  MenuItem,
   Pagination,
   Paper,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -23,7 +25,7 @@ import {
 import { useLocation } from "react-router";
 import { Student, StudentDetailTradeProps } from "../../services/typeProps";
 import RenderRightComponent from "../../components/teacher&student/RenderRightComponent";
-import { weeklySchedule } from "../../services/renderData";
+import { clubs, weeklySchedule } from "../../services/renderData";
 
 const StudentDetailPage = () => {
   const location = useLocation();
@@ -335,10 +337,6 @@ const Main: React.FC<{ student: Student }> = ({ student }) => {
                   </TableContainer>
                 </Grid>
               </Grid>
-            </Box>
-            {/* NK */}
-            <Box sx={{ marginTop: 2, padding: "20px" }}>
-              
             </Box>
           </Box>
         </Grid>
