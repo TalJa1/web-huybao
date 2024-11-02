@@ -189,12 +189,12 @@ const Main: React.FC = () => {
                 <TableCell
                   sx={{ color: "#818181", fontSize: "18px", fontWeight: "700" }}
                 >
-                  DOB
+                  Ngày sinh
                 </TableCell>
                 <TableCell
                   sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
                 >
-                  Tên bố mẹ
+                  Tên người giám hộ
                 </TableCell>
                 <TableCell
                   sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
@@ -214,7 +214,7 @@ const Main: React.FC = () => {
                 <TableCell
                   sx={{ color: "black", fontSize: "18px", fontWeight: "700" }}
                 >
-                  Hành động
+                  Chi tiết
                 </TableCell>
               </TableRow>
             </TableHead>

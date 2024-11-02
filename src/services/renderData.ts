@@ -181,19 +181,6 @@ const parentNames = [
   "Phạm Thị J",
 ];
 
-const hometowns = [
-  "Hà Nội",
-  "Hồ Chí Minh",
-  "Đà Nẵng",
-  "Hải Phòng",
-  "Cần Thơ",
-  "Nha Trang",
-  "Huế",
-  "Vũng Tàu",
-  "Quảng Ninh",
-  "Bình Dương",
-];
-
 const generateStudents = (
   numClasses: number,
   studentsPerClass: number
@@ -201,7 +188,6 @@ const generateStudents = (
   const students: Student[] = [];
   let nameIndex = 0;
   let parentIndex = 0;
-  let hometownIndex = 0;
 
   for (let classIndex = 1; classIndex <= numClasses; classIndex++) {
     const className = `11a${classIndex}`;
@@ -212,7 +198,6 @@ const generateStudents = (
     ) {
       if (nameIndex >= additionalNames.length) nameIndex = 0;
       if (parentIndex >= parentNames.length) parentIndex = 0;
-      if (hometownIndex >= hometowns.length) hometownIndex = 0;
 
       students.push({
         name: additionalNames[nameIndex],
@@ -221,13 +206,12 @@ const generateStudents = (
           Math.floor(Math.random() * 28) + 1
         }`,
         parentName: parentNames[parentIndex],
-        hometown: hometowns[hometownIndex],
+        hometown: "Đà Nẵng",
         class: className,
       });
 
       nameIndex++;
       parentIndex++;
-      hometownIndex++;
     }
   }
 
