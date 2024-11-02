@@ -38,7 +38,9 @@ const Main: React.FC = () => {
     [key: string]: (typeof clubs)[keyof typeof clubs];
   }>(clubs);
 
-  const [notifications, setNotifications] = useState<string[]>([]);
+  const [notifications, setNotifications] = useState<
+    { message: string; status: string }[]
+  >([]);
   const [open, setOpen] = useState(false);
 
   const handleStatusChange = (
@@ -54,7 +56,10 @@ const Main: React.FC = () => {
         student.status = newStatus;
         setNotifications((prev) => [
           ...prev,
-          `Học sinh ${student.name} của ${clubName} đổi trạng thái thành ${newStatus}`,
+          {
+            message: `Học sinh ${student.name} của ${clubName} đổi trạng thái thành ${newStatus}`,
+            status: newStatus,
+          },
         ]);
       }
       return updatedClubs;
@@ -78,6 +83,7 @@ const Main: React.FC = () => {
 
   const handleClose = () => {
     setOpen(false);
+    setNotifications([]);
   };
 
   return (
@@ -156,8 +162,11 @@ const Main: React.FC = () => {
               <DialogContentText>No notifications</DialogContentText>
             ) : (
               notifications.map((notification, index) => (
-                <DialogContentText key={index}>
-                  {notification}
+                <DialogContentText
+                  key={index}
+                  sx={{ color: getStatusColor(notification.status) }}
+                >
+                  {notification.message}
                 </DialogContentText>
               ))
             )}
