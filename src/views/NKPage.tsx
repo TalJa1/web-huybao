@@ -57,7 +57,7 @@ const Main: React.FC = () => {
         setNotifications((prev) => [
           ...prev,
           {
-            message: `Học sinh ${student.name} của ${clubName} đổi trạng thái thành ${newStatus}`,
+            message: `Học sinh ${student.name} của ${clubName} đổi trạng thái thành`,
             status: newStatus,
           },
         ]);
@@ -162,11 +162,11 @@ const Main: React.FC = () => {
               <DialogContentText>No notifications</DialogContentText>
             ) : (
               notifications.map((notification, index) => (
-                <DialogContentText
-                  key={index}
-                  sx={{ color: getStatusColor(notification.status) }}
-                >
-                  {notification.message}
+                <DialogContentText key={index}>
+                  {notification.message}{" "}
+                  <span style={{ color: getStatusColor(notification.status) }}>
+                    {notification.status}
+                  </span>
                 </DialogContentText>
               ))
             )}
