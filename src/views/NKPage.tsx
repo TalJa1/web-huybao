@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Grid,
   IconButton,
   MenuItem,
   Paper,
@@ -21,6 +20,7 @@ import {
   Typography,
 } from "@mui/material";
 import { clubs } from "../services/renderData";
+import Grid from "@mui/material/Grid2";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const NKPage = () => {
@@ -54,7 +54,7 @@ const Main: React.FC = () => {
         student.status = newStatus;
         setNotifications((prev) => [
           ...prev,
-          `Student ${student.name} in ${clubName} changed status to ${newStatus}`,
+          `Học sinh ${student.name} của ${clubName} đổi trạng thái thành ${newStatus}`,
         ]);
       }
       return updatedClubs;
@@ -84,8 +84,13 @@ const Main: React.FC = () => {
     <Box>
       {/* NK */}
       <Box sx={{ marginTop: 2, padding: "20px" }}>
-        <Grid container justifyContent="space-between" alignItems="center">
-          <Typography variant="h4">NKPage</Typography>
+        <Grid
+          container
+          justifyContent="space-between"
+          alignItems="center"
+          sx={{ marginBottom: "40px" }}
+        >
+          <Typography variant="h4">Ngoại khóa học sinh</Typography>
           <IconButton color="inherit" onClick={handleClickOpen}>
             <Badge badgeContent={notifications.length} color="error">
               <NotificationsIcon />
