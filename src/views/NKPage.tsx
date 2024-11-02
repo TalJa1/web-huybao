@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import TopLayout from "../components/TopLayout";
 import {
+  Badge,
   Box,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  IconButton,
   MenuItem,
   Paper,
   Select,
@@ -11,8 +18,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import { clubs } from "../services/renderData";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const NKPage = () => {
   return (
@@ -29,6 +38,9 @@ const Main: React.FC = () => {
     [key: string]: (typeof clubs)[keyof typeof clubs];
   }>(clubs);
 
+  const [notifications, setNotifications] = useState<string[]>([]);
+  const [open, setOpen] = useState(false);
+
   const handleStatusChange = (
     clubName: string,
     studentId: string,
@@ -40,6 +52,10 @@ const Main: React.FC = () => {
       const student = club.students.find((s) => s.id === studentId);
       if (student) {
         student.status = newStatus;
+        setNotifications((prev) => [
+          ...prev,
+          `Student ${student.name} in ${clubName} changed status to ${newStatus}`,
+        ]);
       }
       return updatedClubs;
     });
@@ -56,10 +72,26 @@ const Main: React.FC = () => {
     }
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box>
       {/* NK */}
       <Box sx={{ marginTop: 2, padding: "20px" }}>
+        <Grid container justifyContent="space-between" alignItems="center">
+          <Typography variant="h4">NKPage</Typography>
+          <IconButton color="inherit" onClick={handleClickOpen}>
+            <Badge badgeContent={notifications.length} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+        </Grid>
         {Object.entries(clubData).map(([clubName, club]) => (
           <Box key={clubName} sx={{ marginBottom: 4 }}>
             <Box sx={{ color: "#EE7223", fontSize: "24px", marginBottom: 2 }}>
@@ -112,6 +144,20 @@ const Main: React.FC = () => {
             </TableContainer>
           </Box>
         ))}
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Notifications</DialogTitle>
+          <DialogContent>
+            {notifications.length === 0 ? (
+              <DialogContentText>No notifications</DialogContentText>
+            ) : (
+              notifications.map((notification, index) => (
+                <DialogContentText key={index}>
+                  {notification}
+                </DialogContentText>
+              ))
+            )}
+          </DialogContent>
+        </Dialog>
       </Box>
     </Box>
   );
