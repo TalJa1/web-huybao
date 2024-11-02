@@ -312,7 +312,7 @@ const mealNames = [
   "Bánh trôi",
 ];
 
-const categories = ["Bữa sáng", "Bữa trưa", "Vặt"];
+const categories = ["Bữa sáng", "Bữa trưa","Bữa tối" ,"Vặt"];
 
 const generateMeals = (numMealsPerCategory: number): MealDataProps[] => {
   const meals: MealDataProps[] = [];

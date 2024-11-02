@@ -102,6 +102,7 @@ const Main: React.FC = () => {
                 <Tab label="Tất cả" value="Tất cả" />
                 <Tab label="Bữa sáng" value="Bữa sáng" />
                 <Tab label="Bữa trưa" value="Bữa trưa" />
+                <Tab label="Bữa tối" value="Bữa tối" />
                 <Tab label="Vặt" value="Vặt" />
               </Tabs>
             </Grid>
