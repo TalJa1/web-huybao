@@ -102,7 +102,7 @@ const ListStudentHomeComponent = () => {
                   <Typography>{student.name}</Typography>
                 </Grid>
                 <Grid size={2}>
-                  <Typography>ID {student.id}</Typography>
+                  <Typography>{student.id}</Typography>
                 </Grid>
                 <Grid size={2}>
                   <Chip

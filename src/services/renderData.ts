@@ -2,66 +2,67 @@ import { MealDataProps, Student } from "./typeProps";
 
 export const homeListStudent = [
   {
-    name: "Phạm Quang Huy",
+    name: "Phạm Quang Liên",
     class: "11a1",
-    id: "123456789",
+    id: "HOPE00200",
     fee: "đ 3.000.000",
   },
   {
     name: "Nguyễn Văn A",
     class: "11a2",
-    id: "987654321",
+    id: "HOPE00201",
     fee: "đ 2.500.000",
   },
   {
     name: "Trần Thị B",
     class: "11a3",
-    id: "456789123",
+    id: "HOPE00202",
     fee: "đ 3.200.000",
   },
   {
     name: "Lê Văn C",
     class: "11a4",
-    id: "789123456",
+    id: "HOPE00203",
     fee: "đ 2.800.000",
   },
   {
     name: "Hoàng Thị D",
     class: "11a5",
-    id: "321654987",
+    id: "HOPE00204",
     fee: "đ 3.100.000",
   },
   {
     name: "Phạm Văn E",
     class: "11a6",
-    id: "654987321",
+    id: "HOPE00205",
     fee: "đ 2.900.000",
   },
   {
     name: "Nguyễn Thị F",
     class: "11a7",
-    id: "123789456",
+    id: "HOPE00206",
     fee: "đ 3.300.000",
   },
   {
     name: "Trần Văn G",
     class: "11a8",
-    id: "987321654",
+    id: "HOPE00207",
     fee: "đ 2.700.000",
   },
   {
     name: "Lê Thị H",
     class: "11a9",
-    id: "456123789",
+    id: "HOPE00208",
     fee: "đ 3.400.000",
   },
   {
     name: "Hoàng Văn I",
     class: "11a10",
-    id: "789654123",
+    id: "HOPE00209",
     fee: "đ 2.600.000",
   },
 ];
+
 
 const additionalNames = [
   "Nguyễn Văn B",
